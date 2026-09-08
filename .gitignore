@@ -1,0 +1,27 @@
+# Local agent instructions — never publish
+CLAUDE.md
+.claude/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+*.key
+secrets.json
+
+# Build & dependency noise (none used by this site, kept as a guard)
+node_modules/
+__pycache__/
+*.pyc
