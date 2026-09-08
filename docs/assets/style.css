@@ -354,3 +354,91 @@ hr.rule {
 .ref-V { background: var(--v-bg); color: var(--v-fg); border-color: var(--v-br); }
 .ref-I { background: var(--i-bg); color: var(--i-fg); border-color: var(--i-br); }
 .ref-U { background: var(--u-bg); color: var(--u-fg); border-color: var(--u-br); }
+
+/* ================= figures and inline SVG diagrams ================= */
+
+:root {
+  --accent:      #2f5d8a;
+  --accent-bg:   #e8eff6;
+  --accent-br:   #b7cde1;
+  --diagram-bg:  #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent:     #8fb8de;
+    --accent-bg:  #1b2a38;
+    --accent-br:  #35536e;
+    --diagram-bg: #1a1a1f;
+  }
+}
+
+.fig {
+  margin: 32px 0 34px;
+  padding: 0;
+}
+
+.fig-scroll {
+  overflow-x: auto;
+  background: var(--diagram-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 18px 16px;
+}
+
+.dgm {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fig figcaption {
+  margin-top: 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* Let diagrams breathe past the text measure on wide screens. */
+@media (min-width: 900px) {
+  .fig { width: calc(100% + 120px); margin-left: -60px; }
+}
+
+/* ---- SVG primitives ---- */
+
+.dgm .n      { fill: var(--surface); stroke: var(--rule); stroke-width: 1; }
+.dgm .n-key  { fill: var(--accent-bg); stroke: var(--accent-br); }
+.dgm .n-alert{ fill: var(--i-bg); stroke: var(--i-br); }
+.dgm .n-dim  { fill: transparent; stroke: var(--rule); stroke-dasharray: 4 3; }
+
+.dgm text { font-family: var(--sans); }
+.dgm .lbl     { font-size: 12.5px; font-weight: 650; fill: var(--ink); }
+.dgm .lbl-m   { font-size: 11.5px; font-weight: 600; fill: var(--ink); }
+.dgm .lbl-s   { font-size: 10.5px; fill: var(--ink-soft); }
+.dgm .lbl-cap { font-size: 9.5px;  fill: var(--ink-faint); letter-spacing: 0.11em; }
+
+.dgm .edge      { stroke: var(--ink-faint); stroke-width: 1.4; fill: none; }
+.dgm .edge-dash { stroke-dasharray: 5 4; }
+.dgm .mk        { fill: var(--ink-faint); }
+.dgm .mk-dim    { fill: var(--ink-faint); }
+.dgm .divider   { stroke: var(--rule); stroke-width: 1.4; stroke-dasharray: 5 5; }
+
+/* evidence markers drawn inside figures — chrome, not source tags */
+.dgm .ref-t    { font-family: var(--mono); font-size: 10.5px; font-weight: 600; }
+.dgm .ref-t-V  { fill: var(--v-fg); }
+.dgm .ref-t-I  { fill: var(--i-fg); }
+.dgm .ref-t-U  { fill: var(--u-fg); }
+
+.dgm .bar     { stroke-width: 1; }
+.dgm .bar-V   { fill: var(--v-bg); stroke: var(--v-br); }
+.dgm .bar-I   { fill: var(--i-bg); stroke: var(--i-br); }
+.dgm .bar-U   { fill: var(--u-bg); stroke: var(--u-br); }
+.dgm .bar-dim { fill: var(--accent-bg); stroke: var(--accent-br); }
+.dgm .bar-t   { font-family: var(--mono); font-size: 12px; font-weight: 600; }
+.dgm .bar-t-V { fill: var(--v-fg); }
+.dgm .bar-t-I { fill: var(--i-fg); }
+.dgm .bar-t-U { fill: var(--u-fg); }
+
+@media print {
+  .fig-scroll { border-color: #999; background: #fff; }
+}

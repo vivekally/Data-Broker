@@ -72,6 +72,27 @@ Compound tags are used where a claim splits across categories, and are
 reproduced as written — for example `[V on motion; U on numbers]`, meaning the
 sales motion is verified but the numbers behind it are not.
 
+### Diagrams
+
+The site carries nine hand-drawn figures: the positioning reframe and evidence
+distribution on the overview, the applied research loop and deal path for
+Evaratus, the brokerage pipeline and pivot signal for Petrarch, the value-chain
+comparison, and the market concentration and spend-scale charts on the
+landscape page.
+
+They are **visualizations of the brief, not additions to it.** Each one encodes
+only mechanisms the source already states, and each figcaption names what it is
+drawn from and how well evidenced it is. They are inline SVG with no library,
+no runtime and no external images, and they follow the page's light and dark
+themes.
+
+One convention matters for auditing: evidence tags copied verbatim from the
+source are marked `class="tag"`, while evidence markers that are editorial
+furniture — the page header, the legend, labels inside diagrams — are marked
+`class="ref"`. Counting `class="tag tag-V|I|U"` across the published pages
+therefore returns exactly the source's tag count, with no inflation from
+chrome.
+
 Tag distribution across the brief:
 
 | | `[V]` | `[I]` | `[U]` | Total |
@@ -91,7 +112,7 @@ docs/                        the published site
   petrarch.html              Part 1, Company B
   comparison.html            Part 2, cross-company
   landscape.html             Part 3, competitors
-  assets/style.css           the site's only stylesheet
+  assets/style.css           the site's only stylesheet, including the diagrams
   .nojekyll                  serve files as-is, no Jekyll processing
 LICENSE                      CC BY 4.0
 .github/workflows/pages.yml  build and deploy to GitHub Pages
