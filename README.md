@@ -94,8 +94,8 @@ landscape page.
 They are **visualizations of the brief, not additions to it.** Each one encodes
 only mechanisms the source already states, and each figcaption names what it is
 drawn from and how well evidenced it is. They are inline SVG with no library,
-no runtime and no external images, and they follow the page's light and dark
-themes.
+no runtime and no external images, and they use the site's dark palette
+(light when printed).
 
 One convention matters for auditing: evidence tags copied verbatim from the
 source are marked `class="tag"`, while evidence markers that are editorial
@@ -138,7 +138,9 @@ LICENSE                      CC BY 4.0
 ```
 
 The site is hand-written static HTML with a single stylesheet. No framework, no
-build step, no CDN, no webfonts, no analytics, no trackers. The benchmark page
+build step, no CDN, no webfonts, no analytics, no trackers. The site is
+dark-only, whatever the visitor's system setting; printing switches to a light
+palette. The benchmark page
 is the only one with JavaScript, a single inline vanilla script. It renders offline
 from a local clone by opening `docs/index.html`.
 

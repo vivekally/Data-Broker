@@ -2,39 +2,26 @@
    Static stylesheet. No frameworks, no CDN, no webfonts, no trackers. */
 
 :root {
-  --bg:        #faf9f6;
-  --surface:   #ffffff;
-  --ink:       #1a1a18;
-  --ink-soft:  #4a4a45;
-  --ink-faint: #75746c;
-  --rule:      #e2e0d8;
-  --rule-soft: #eceae3;
+  /* The site is dark-only: one palette, no light theme. */
+  color-scheme: dark;
 
-  --v-bg: #e6f2e9;  --v-fg: #1f5b34;  --v-br: #bcdcc6;
-  --i-bg: #fbf0dc;  --i-fg: #7a4e12;  --i-br: #ebd6ae;
-  --u-bg: #eceef1;  --u-fg: #4b555f;  --u-br: #d3d8de;
+  --bg:        #16161a;
+  --surface:   #1d1d22;
+  --ink:       #e8e6e0;
+  --ink-soft:  #b6b3aa;
+  --ink-faint: #8b8880;
+  --rule:      #33333b;
+  --rule-soft: #26262d;
+
+  --v-bg: #16301f;  --v-fg: #8fd3a5;  --v-br: #2b5237;
+  --i-bg: #33260f;  --i-fg: #e8bd72;  --i-br: #574021;
+  --u-bg: #24272c;  --u-fg: #a8b2bd;  --u-br: #3b414a;
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, "Times New Roman", serif;
   --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   --measure: 74ch;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:        #16161a;
-    --surface:   #1d1d22;
-    --ink:       #e8e6e0;
-    --ink-soft:  #b6b3aa;
-    --ink-faint: #8b8880;
-    --rule:      #33333b;
-    --rule-soft: #26262d;
-
-    --v-bg: #16301f;  --v-fg: #8fd3a5;  --v-br: #2b5237;
-    --i-bg: #33260f;  --i-fg: #e8bd72;  --i-br: #574021;
-    --u-bg: #24272c;  --u-fg: #a8b2bd;  --u-br: #3b414a;
-  }
 }
 
 * { box-sizing: border-box; }
@@ -358,19 +345,10 @@ hr.rule {
 /* ================= figures and inline SVG diagrams ================= */
 
 :root {
-  --accent:      #2f5d8a;
-  --accent-bg:   #e8eff6;
-  --accent-br:   #b7cde1;
-  --diagram-bg:  #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --accent:     #8fb8de;
-    --accent-bg:  #1b2a38;
-    --accent-br:  #35536e;
-    --diagram-bg: #1a1a1f;
-  }
+  --accent:     #8fb8de;
+  --accent-bg:  #1b2a38;
+  --accent-br:  #35536e;
+  --diagram-bg: #1a1a1f;
 }
 
 .fig {
@@ -704,3 +682,18 @@ tr.empty td { text-align: center; color: var(--ink-faint); padding: 28px; }
 
 /* Figures on the wide benchmark page stay at a readable width. */
 .wrap-wide .fig { width: auto; max-width: 900px; margin-left: 0; }
+
+/* Printing puts the page on white paper, so print uses the light palette. */
+@media print {
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;  --surface: #ffffff;
+    --ink: #1a1a18; --ink-soft: #4a4a45; --ink-faint: #75746c;
+    --rule: #e2e0d8; --rule-soft: #eceae3;
+    --v-bg: #e6f2e9;  --v-fg: #1f5b34;  --v-br: #bcdcc6;
+    --i-bg: #fbf0dc;  --i-fg: #7a4e12;  --i-br: #ebd6ae;
+    --u-bg: #eceef1;  --u-fg: #4b555f;  --u-br: #d3d8de;
+    --accent: #2f5d8a; --accent-bg: #e8eff6; --accent-br: #b7cde1;
+    --diagram-bg: #ffffff;
+  }
+}
