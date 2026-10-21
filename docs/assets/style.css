@@ -2,26 +2,53 @@
    Static stylesheet. No frameworks, no CDN, no webfonts, no trackers. */
 
 :root {
-  /* The site is dark-only: one palette, no light theme. */
+  /* Two themes. Dark is the default; a visitor's choice from the picker
+     is stored and applied as data-theme on <html> before first paint. */
   color-scheme: dark;
 
-  --bg:        #16161a;
-  --surface:   #1d1d22;
-  --ink:       #e8e6e0;
-  --ink-soft:  #b6b3aa;
-  --ink-faint: #8b8880;
-  --rule:      #33333b;
-  --rule-soft: #26262d;
+  --bg:        #0b0b0e;
+  --surface:   #15151a;
+  --ink:       #f5f3ee;
+  --ink-soft:  #d2cfc6;
+  --ink-faint: #a8a59c;
+  --rule:      #3d3d48;
+  --rule-soft: #26262e;
 
-  --v-bg: #16301f;  --v-fg: #8fd3a5;  --v-br: #2b5237;
-  --i-bg: #33260f;  --i-fg: #e8bd72;  --i-br: #574021;
-  --u-bg: #24272c;  --u-fg: #a8b2bd;  --u-br: #3b414a;
+  --v-bg: #0f2a18;  --v-fg: #a3ecb9;  --v-br: #2f6a44;
+  --i-bg: #33240a;  --i-fg: #f5cd86;  --i-br: #6e5020;
+  --u-bg: #1f232a;  --u-fg: #c3cdd8;  --u-br: #4a525e;
+
+  --accent:     #a3cdf3;
+  --accent-bg:  #16283a;
+  --accent-br:  #3f6890;
+  --diagram-bg: #101014;
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, "Times New Roman", serif;
   --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   --measure: 74ch;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg:        #faf9f6;
+  --surface:   #ffffff;
+  --ink:       #1a1a18;
+  --ink-soft:  #4a4a45;
+  --ink-faint: #75746c;
+  --rule:      #e2e0d8;
+  --rule-soft: #eceae3;
+
+  --v-bg: #e6f2e9;  --v-fg: #1f5b34;  --v-br: #bcdcc6;
+  --i-bg: #fbf0dc;  --i-fg: #7a4e12;  --i-br: #ebd6ae;
+  --u-bg: #eceef1;  --u-fg: #4b555f;  --u-br: #d3d8de;
+
+  --accent:     #2f5d8a;
+  --accent-bg:  #e8eff6;
+  --accent-br:  #b7cde1;
+  --diagram-bg: #ffffff;
 }
 
 * { box-sizing: border-box; }
@@ -343,13 +370,6 @@ hr.rule {
 .ref-U { background: var(--u-bg); color: var(--u-fg); border-color: var(--u-br); }
 
 /* ================= figures and inline SVG diagrams ================= */
-
-:root {
-  --accent:     #8fb8de;
-  --accent-bg:  #1b2a38;
-  --accent-br:  #35536e;
-  --diagram-bg: #1a1a1f;
-}
 
 .fig {
   margin: 32px 0 34px;
@@ -697,3 +717,30 @@ tr.empty td { text-align: center; color: var(--ink-faint); padding: 28px; }
     --diagram-bg: #ffffff;
   }
 }
+
+/* ---- theme picker (injected into the brief switcher by theme.js) ---- */
+
+.theme-picker {
+  margin-left: auto;
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  overflow: hidden;
+  align-self: center;
+}
+.theme-picker button {
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 0;
+  background: transparent;
+  color: var(--ink-faint);
+  padding: 4px 11px;
+  cursor: pointer;
+}
+.theme-picker button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.theme-picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media print { .theme-picker { display: none; } }

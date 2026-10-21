@@ -94,8 +94,8 @@ landscape page.
 They are **visualizations of the brief, not additions to it.** Each one encodes
 only mechanisms the source already states, and each figcaption names what it is
 drawn from and how well evidenced it is. They are inline SVG with no library,
-no runtime and no external images, and they use the site's dark palette
-(light when printed).
+no runtime and no external images, and they follow the site's dark and light
+themes.
 
 One convention matters for auditing: evidence tags copied verbatim from the
 source are marked `class="tag"`, while evidence markers that are editorial
@@ -132,16 +132,19 @@ docs/                        the published site
   canada-market.html         Brief 2, market and implications
   benchmark.html             vendor benchmark: scorecard, data and methodology in one file
   assets/style.css           the site's only stylesheet, including the diagrams
+  assets/theme.js            the Dark / Light theme picker
   .nojekyll                  serve files as-is, no Jekyll processing
 LICENSE                      CC BY 4.0
 .github/workflows/pages.yml  build and deploy to GitHub Pages
 ```
 
 The site is hand-written static HTML with a single stylesheet. No framework, no
-build step, no CDN, no webfonts, no analytics, no trackers. The site is
-dark-only, whatever the visitor's system setting; printing switches to a light
-palette. The benchmark page
-is the only one with JavaScript, a single inline vanilla script. It renders offline
+build step, no CDN, no webfonts, no analytics, no trackers. It is dark by
+default, with a Dark / Light picker in the top nav on every page; the choice is
+stored in the visitor's browser and applied before first paint, and printing
+always uses the light palette. The only JavaScript is the picker
+(`assets/theme.js` plus a one-line snippet in each page's head) and the
+benchmark page's inline script; without JavaScript the site renders dark. It renders offline
 from a local clone by opening `docs/index.html`.
 
 `research/research-brief.md` is a byte-for-byte copy of the source document
