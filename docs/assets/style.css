@@ -459,3 +459,248 @@ hr.rule {
 .nav-brief a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
 
 .dgm a { fill: var(--accent); }
+
+/* ================= vendor benchmark (benchmark.html) ================= */
+
+/* The scorecard needs more width than the prose measure. Prose inside the
+   wide wrap is held back to the measure by .prose. */
+.wrap-wide { max-width: 1380px; }
+.wrap-wide .prose,
+.wrap-wide > .provenance,
+.wrap-wide > .masthead p.lede { max-width: var(--measure); }
+
+.lede { font-size: 1.06rem; color: var(--ink-soft); margin: 0 0 24px; }
+
+/* Benchmark evidence tags. Styled like .tag but a separate class, so the
+   brief pages' tag audit (count class="tag tag-*") is unaffected. */
+.btag {
+  display: inline;
+  font-family: var(--mono);
+  font-size: 0.78em;
+  line-height: 1.4;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid;
+  white-space: normal;
+}
+.btag-V { background: var(--v-bg); color: var(--v-fg); border-color: var(--v-br); }
+.btag-I { background: var(--i-bg); color: var(--i-fg); border-color: var(--i-br); }
+.btag-U { background: var(--u-bg); color: var(--u-fg); border-color: var(--u-br); }
+.btag a { color: inherit; }
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 44px;
+  margin: 4px 0 28px;
+}
+.stat .v {
+  display: block;
+  font-family: var(--mono);
+  font-size: 1.7rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.stat .k {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 6px;
+}
+
+/* ---- controls ---- */
+
+.bm-controls { margin: 0 0 16px; }
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface);
+  margin: 0 12px 12px 0;
+  vertical-align: top;
+}
+.seg button {
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  cursor: pointer;
+  border-right: 1px solid var(--rule);
+}
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.chip {
+  font: inherit;
+  font-size: 13px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.chip .n { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-left: 4px; }
+.chip[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.chip[aria-pressed="true"] .n { color: var(--accent); }
+
+.bm-search {
+  font: inherit;
+  font-size: 14px;
+  padding: 7px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  width: 240px;
+  max-width: 100%;
+}
+
+.bm-hint { font-size: 13px; color: var(--ink-faint); margin: 0 0 10px; }
+
+/* ---- scorecard ---- */
+
+.scorecard { min-width: 1180px; font-size: 13.5px; }
+.scorecard th, .scorecard td { padding: 9px 6px; vertical-align: middle; }
+.scorecard thead th {
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  z-index: 2;
+}
+.scorecard thead th.col-vendor { text-align: left; min-width: 230px; padding-left: 12px; }
+.scorecard thead th[data-col] { cursor: pointer; user-select: none; }
+.scorecard thead th[data-col]:hover { color: var(--ink); }
+.scorecard thead th.sorted { color: var(--accent); }
+.scorecard thead th.sorted::after { content: " \25BE"; }
+.scorecard thead th.sorted.asc::after { content: " \25B4"; }
+.scorecard thead tr.groups th {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 7px 8px 5px;
+}
+.scorecard td:first-child { font-weight: 400; padding-left: 12px; }
+
+.scorecard .col-vendor,
+.scorecard td.vendor {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  z-index: 1;
+  border-right: 1px solid var(--rule-soft);
+}
+.scorecard thead .col-vendor { background: var(--bg); z-index: 3; }
+
+.vendor .vn { font-weight: 650; font-size: 14px; color: var(--ink); }
+.vendor .vn button {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0;
+  cursor: pointer; text-align: left;
+}
+.vendor .vn button::before { content: "\25B8"; display: inline-block; width: 1em; color: var(--ink-faint); font-size: 11px; }
+.vendor .vn button[aria-expanded="true"]::before { content: "\25BE"; }
+.vendor .vm { font-size: 12px; color: var(--ink-faint); line-height: 1.4; margin-top: 2px; padding-left: 1em; }
+.vendor .vd { font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; margin-top: 3px; padding-left: 1em; max-width: 32ch; }
+
+.num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
+}
+.fit { font-weight: 650; font-size: 14px; }
+.cov .bar { height: 3px; background: var(--rule-soft); border-radius: 2px; margin-top: 4px; }
+.cov .bar i { display: block; height: 3px; background: var(--ink-faint); border-radius: 2px; }
+
+/* Score heat: one hue (the verified-green), stepped by alpha so it reads
+   in both themes. */
+.sc { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: center; color: var(--ink); }
+.sc.na { color: var(--ink-faint); }
+.s1, .s2  { background: color-mix(in srgb, var(--v-fg) 4%, transparent); }
+.s3, .s4  { background: color-mix(in srgb, var(--v-fg) 10%, transparent); }
+.s5, .s6  { background: color-mix(in srgb, var(--v-fg) 18%, transparent); }
+.s7       { background: color-mix(in srgb, var(--v-fg) 27%, transparent); }
+.s8       { background: color-mix(in srgb, var(--v-fg) 36%, transparent); }
+.s9, .s10 { background: color-mix(in srgb, var(--v-fg) 48%, transparent); font-weight: 650; }
+
+.grade {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 650;
+  width: 22px; height: 22px; line-height: 20px;
+  border-radius: 50%;
+  border: 1px solid;
+  text-align: center;
+}
+.grade-A { background: var(--v-bg); color: var(--v-fg); border-color: var(--v-br); }
+.grade-B { background: var(--i-bg); color: var(--i-fg); border-color: var(--i-br); }
+.grade-C { background: var(--u-bg); color: var(--u-fg); border-color: var(--u-br); }
+
+tr.detail td { background: var(--bg); padding: 16px 18px 18px; border-bottom: 1px solid var(--rule); }
+tr.detail .dwrap { position: sticky; left: 18px; max-width: min(92ch, calc(100vw - 84px)); }
+tr.detail h4 {
+  font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-faint); margin: 0 0 8px;
+}
+tr.detail ul { margin: 0 0 12px; }
+tr.detail li { font-size: 13.5px; margin-bottom: 7px; }
+tr.detail .why { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 12px; }
+tr.detail .money { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); margin: 0 0 12px; }
+tr.empty td { text-align: center; color: var(--ink-faint); padding: 28px; }
+
+/* ---- methodology cards ---- */
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+  margin: 0 0 30px;
+}
+.mcard {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 16px 18px 12px;
+}
+.mcard h4 { font-family: var(--serif); font-size: 1.05rem; margin: 0 0 2px; }
+.mcard .grp { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.mcard p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; margin: 0 0 10px; }
+.mcard dl { margin: 0; font-size: 12.5px; line-height: 1.45; }
+.mcard dt { font-family: var(--mono); font-weight: 600; color: var(--ink); float: left; width: 3.6em; }
+.mcard dd { margin: 0 0 6px 3.6em; color: var(--ink-soft); }
+
+/* ---- split chart (three buyer tracks) ---- */
+.dgm .bf      { fill: var(--ink-faint); fill-opacity: 0.45; }
+.dgm .bf-lead { fill: var(--accent); fill-opacity: 0.9; }
+.dgm .grid   { stroke: var(--rule-soft); stroke-width: 1; }
+
+@media (max-width: 620px) {
+  .scorecard thead th.col-vendor { min-width: 140px; }
+  .vendor .vd { display: none; }
+  .seg button { padding: 8px 10px; }
+  .stats { gap: 14px 28px; }
+  .stat .v { font-size: 1.35rem; }
+  .bm-search { width: 100%; }
+}
+
+@media print {
+  .bm-controls { display: none; }
+  .scorecard { min-width: 0; }
+}
+
+/* Figures on the wide benchmark page stay at a readable width. */
+.wrap-wide .fig { width: auto; max-width: 900px; margin-left: 0; }

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Vendor Benchmark</title>
+<meta name="description" content="An evidence-tagged benchmark of 45 data vendors that supply frontier LLM labs, world-model labs and robotics labs, scored on 13 dimensions. Analysis of public sources, 2026-10-20.">
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<div class="wrap wrap-wide">
+<header class="masthead">
+<p class="eyebrow">Benchmark &middot; v0.1</p>
+<h1>Data vendors for LLM, world-model and robotics labs</h1>
+<p class="lede">An independent scorecard of 45 companies that sell data, environments and evaluations to frontier labs: the human-data foundries that feed LLM post-training, the video and simulation suppliers that feed world models, and the teleoperation and motion-capture suppliers that feed robot foundation models. Each is scored 1&ndash;10 on 13 dimensions, with every fact behind the scores tagged by evidence strength.</p>
+<div class="stats">
+<div class="stat"><span class="v" id="stat-n">45</span><span class="k">Vendors scored</span></div>
+<div class="stat"><span class="v">13</span><span class="k">Dimensions</span></div>
+<div class="stat"><span class="v">3</span><span class="k">Buyer views</span></div>
+<div class="stat"><span class="v">v0.1</span><span class="k">Benchmark version</span></div>
+<div class="stat"><span class="v">2026-10-20</span><span class="k">As of</span></div>
+</div>
+</header>
+<p class="provenance"><strong>Analysis of public sources. No vendor was tested, contacted or paid.</strong> Scores are analyst judgments against the rubric in the methodology section, so every score is <span class="ref ref-I">[I]</span>. The facts behind them carry their own tags: <span class="ref ref-V">[V]</span> verified by a named source, <span class="ref ref-I">[I]</span> inferred, <span class="ref ref-U">[U]</span> unverified or self-reported. Dated 2026-10-20.</p>
+<nav class="nav nav-brief"><a href="./index.html">Evaratus &amp; Petrarch</a><a href="./canada.html">Canada landscape</a><a href="./benchmark.html" aria-current="page">Vendor benchmark</a></nav>
+<nav class="nav"><a href="#scorecard">Scorecard</a><a href="#split">The split</a><a href="#findings">Findings</a><a href="#methodology">Methodology</a><a href="#limits">Limits</a></nav>
+
+<h2 id="scorecard">Scorecard</h2>
+<div class="bm-controls">
+<div class="seg" role="group" aria-label="Buyer view">
+<button type="button" data-view="all" aria-pressed="true">All vendors</button>
+<button type="button" data-view="llm" aria-pressed="false">For LLM labs</button>
+<button type="button" data-view="wm" aria-pressed="false">For world-model labs</button>
+<button type="button" data-view="rb" aria-pressed="false">For robotics labs</button>
+</div>
+<input class="bm-search" id="bm-search" type="search" placeholder="Search vendors" aria-label="Search vendors">
+<div class="chips" id="type-chips" role="group" aria-label="Vendor type"></div>
+<div class="chips" id="region-chips" role="group" aria-label="Region"></div>
+</div>
+<p class="bm-hint" id="bm-hint">Click a column to sort. Click a vendor for the evidence behind its scores. &ldquo;&mdash;&rdquo; means the vendor does not offer that capability, or no public evidence was found to score it.</p>
+<div class="table-scroll">
+<table class="scorecard" id="scorecard-table">
+<thead>
+<tr class="groups">
+<th class="col-vendor"></th>
+<th colspan="5">Composite</th>
+<th colspan="4">LLM post-training</th>
+<th colspan="3">World models &amp; robotics</th>
+<th colspan="4">Buyer gates</th>
+<th colspan="2">Conduct</th>
+<th></th>
+</tr>
+<tr id="thead-row"></tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<noscript><p><strong>The interactive scorecard needs JavaScript.</strong> The scores and sources live in this page's source as a plain data array, readable without running it.</p></noscript>
+
+<h2 id="split">Three buyers, almost no overlap</h2>
+<div class="prose">
+<p>Setting each vendor's fit for the three buyers side by side shows how little they share. The LLM suppliers have no bar for the other two. The physical-AI suppliers overlap more, because robot data helps action-conditioned world models and simulation serves both, but they are led by different firms: licensed-video and simulation vendors for world models, teleoperation and motion-capture vendors for robotics. Only two vendors clear 6 for all three buyers: TELUS Digital, a managed-annotation incumbent, and Encord, a data platform. Neither leads any of them.</p>
+</div>
+<figure class="fig"><div class="fig-scroll" id="split-chart"></div><figcaption>One row per vendor, one bar track per buyer, each on the 0&ndash;10 fit composite defined in the methodology; a missing bar means no capability for that buyer. Rows are grouped by the buyer each vendor fits best, darker bars mark that buyer, and the two names in bold clear 6 for all three. Drawn from the scorecard data on this page, so it is <span class="ref ref-I">[I]</span> throughout.</figcaption></figure>
+
+<h2 id="findings">What the benchmark shows</h2>
+<div class="prose">
+<ul>
+<li><strong>No vendor leads more than one market well, except at the physical-AI end.</strong> The top LLM-fit scores belong to Surge, Snorkel, Mercor and Handshake. The top world-model scores belong to Lightwheel, Troveo and XDOF; the top robotics scores to XDOF, Lightwheel, Encord and Mecka AI. None of the LLM leaders publicly sells robot demonstration data at scale, and none of the robotics-data leaders runs an expert network for text post-training. micro1 and Scale are the clearest attempts to straddle LLM and robotics, and both score below the robotics specialists. <span class="btag btag-I">[I, from the capability columns]</span></li>
+<li><strong>Ownership is now a buyer gate, not a footnote.</strong> Scale AI has the deepest capability set in the table and the lowest neutrality score. After Meta bought 49% of it, Google, OpenAI and xAI cut or reduced work with it within weeks, and the business moved to Mercor and Surge. <span class="btag btag-V">[V, analyst write-ups of the June 2025 deal, as carried in the <a href="./canada-buying.html">Canada brief</a>]</span> The same logic now applies to strategic money in robotics data: Mecka AI's 2026 round includes NVIDIA, Samsung and Microsoft's M12, all potential buyers. <span class="btag btag-V">[V, <a href="https://dealroom.co/news/160699-mecka-raises-60m-series-b-to-turn-human-motion-into-robot-training-data/" target="_blank" rel="noopener noreferrer">Dealroom</a>, 7 Oct 2026]</span></li>
+<li><strong>Security and labor are the weakest columns in the industry, and growth makes them worse.</strong> Mercor, one of the two fastest-growing firms in the table, lost Meta's work after a March 2026 breach that reached contractor identity documents and biometrics, and faces several class actions over it. <span class="btag btag-V">[V, <a href="https://techcrunch.com/2026/04/09/after-data-breach-10b-valued-startup-mercor-is-having-a-month" target="_blank" rel="noopener noreferrer">TechCrunch</a>, 9 Apr 2026; <a href="https://www.staffingindustry.com/news/global-daily-news/ai-staffing-firm-mercor-faces-lawsuits-over-data-breach" target="_blank" rel="noopener noreferrer">SIA</a>]</span> Scale and Surge both face misclassification suits from contributors. A contributor pool of tens of thousands of people holding lab task data is an attack surface that labs are only starting to audit. <span class="btag btag-I">[I]</span></li>
+<li><strong>Headline revenue is gross, and roughly two thirds of it is contractor pay.</strong> Mercor's contractors receive 60&ndash;70% of top-line revenue, and Handshake's AI-training business nets about $300M on nearly $1B gross. <span class="btag btag-V">[V, <a href="https://sacra.com/c/mercor/" target="_blank" rel="noopener noreferrer">Sacra</a>; <a href="https://dealroom.co/news/127345-handshakes-arr-crosses-1b-as-ai-training-revenue-surges/" target="_blank" rel="noopener noreferrer">Dealroom</a>, Apr 2026]</span> Comparing these firms on gross run-rate against software companies overstates them by about three times. <span class="btag btag-I">[I]</span></li>
+<li><strong>World models and robotics are adjacent markets, not one.</strong> Lightwheel and XDOF sit near the top of both, because each pairs robot data with simulation. Below them the lists divide: Troveo and Shutterstock rank high for world-model labs but low or not at all for robotics, since unlabelled video without actions is of limited use for training a robot policy; XDOF and Mecka AI rank higher for robotics than for world models. <span class="btag btag-I">[I, from the fit columns]</span></li>
+<li><strong>Robotics data comes from three supply models, and none is safe from substitutes.</strong> Teleoperation on real robots (XDOF, Microagi, Cortex AI) is the scarcest and most robot-specific. Wearable capture of people doing real work (Mecka AI, Human Archive, Build AI, Luel) scales fastest, and it is where questions about pay and consent concentrate. Studio motion capture (Bones Studio, Noitom) is moving to open research releases with paid enterprise tiers. <span class="btag btag-I">[I, from the vendor evidence]</span> Each competes with a non-vendor source: state-funded training centres in China, such as Beijing's 10,000-square-metre humanoid centre <span class="btag btag-V">[V, <a href="https://english.beijing.gov.cn/latest/news/202510/t20251009_4216190.html" target="_blank" rel="noopener noreferrer">Beijing government</a>, Oct 2025]</span>, and labs collecting in-house. XDOF's own pitch is that a lab would need a warehouse of robots to match it. <span class="btag btag-V">[V that the argument was made, <a href="https://techcrunch.com/2026/06/17/collecting-robot-training-data-is-dirty-unglamorous-work-some-ai-labs-are-already-paying-xdof-to-do-it/" target="_blank" rel="noopener noreferrer">TechCrunch</a>, 17 Jun 2026]</span></li>
+<li><strong>2026's money is moving to robotics data.</strong> XDOF launched with $70M in June and was reportedly in Series B talks at $1.2B three months later; Microagi raised Germany's largest-ever seed, $55M, ten months after founding; Mecka AI raised a $60M Series B led by Sequoia in October; Lightwheel booked about 550M yuan of orders in Q1 alone. <span class="btag btag-V">[V, <a href="https://siliconangle.com/2026/06/17/robotic-teleoperation-data-startup-xdof-launches-70m-funding/" target="_blank" rel="noopener noreferrer">SiliconANGLE</a>; <a href="https://sifted.eu/articles/munich-robotics-startup-microagi-raises-55m-germanys-largest-ever-seed-round" target="_blank" rel="noopener noreferrer">Sifted</a>; Dealroom; <a href="https://autonews.gasgoo.com/articles/news/waic-2026-lightwheel-demonstrates-physical-ai-infrastructure-2078079009186357249" target="_blank" rel="noopener noreferrer">Gasgoo</a>]</span> <span class="btag btag-U">[U on the XDOF Series B, summary only]</span></li>
+<li><strong>Raw egocentric video is commoditising; action-labelled and teleoperated data is not.</strong> Build AI released roughly a million hours of factory egocentric video under Apache 2.0 in April 2026, which sets a price of zero for unlabelled first-person footage. <span class="btag btag-V">[V that the release was reported, <a href="https://tesseract.academy/top-5-physical-ai-training-data-providers-in-2026/" target="_blank" rel="noopener noreferrer">Tesseract</a>; U on the hour count]</span> The firms commanding rounds are the ones selling robot-specific teleoperation, motion capture and simulation loops, where open data does not substitute. <span class="btag btag-I">[I]</span></li>
+<li><strong>Rights is the one dimension where licensors beat the foundries.</strong> Licensed-content suppliers (Shutterstock, Protege, Troveo, Wirestock, Cloudflare's Human Native) score highest on chain of title because their unit of sale is the licence itself. For world-model labs training on video, that matters more than it does in text post-training, where the data is commissioned rather than found. <span class="btag btag-I">[I]</span></li>
+<li><strong>One result may touch the Canada brief.</strong> Dealroom describes Mecka AI as a New York and Toronto startup with $128M disclosed across three rounds since August 2025. <span class="btag btag-V">[V, Dealroom, 7 Oct 2026]</span> Fortune's profile places its headquarters in New York and mentions no Canadian office. <span class="btag btag-V">[V, <a href="https://fortune.com/2026/06/01/mecka-ai-series-a-60-million-robotics-data-training/" target="_blank" rel="noopener noreferrer">Fortune</a>, 1 Jun 2026]</span> The <a href="./canada.html">Canada brief</a> found no Canadian pure-play AI data-supply company with a venture round as of 2026-09-30. If Mecka AI has a real Toronto operation, it would qualify that finding; on current evidence it is most likely a US company with at most a Canadian team. <span class="btag btag-U">[U]</span> The brief is reproduced verbatim and has not been edited; this is flagged for its next revision.</li>
+</ul>
+</div>
+
+<h2 id="methodology">Methodology</h2>
+<div class="prose">
+<p><strong>Who is in it.</strong> Companies whose main business is supplying training data, RL environments or evaluations to model developers, sorted into seven types. First-party content owners that license their own archives (Reddit, news publishers) are out of scope, as are labs' in-house data teams. Vendors were drawn from the two briefs on this site, the RL List and Pavlov's List directories they cite, and 2026 funding coverage. Robotics vendors were added in a second sweep of 2026 teleoperation, wearable-capture and motion-capture funding news; one egocentric vendor whose only public evidence was its own marketing was left out. Inclusion is not endorsement, and exclusion is not a judgment: a vendor with too little public evidence to score was left out rather than guessed at.</p>
+<p><strong>How the scores are set.</strong> Each dimension has written anchors for 1&ndash;3, 4&ndash;6, 7&ndash;8 and 9&ndash;10, shown in the cards below. A score is the anchor band the public evidence supports, placed within the band by the strength of that evidence. Self-reported claims can lift a score by at most one band over what third-party evidence supports. A dash means either the vendor does not sell that capability, or nothing public was found to score it; the Scored column shows how many of the 13 a vendor was scored on.</p>
+<p><strong>The composites.</strong> Labs buy data per work order, often from a specialist, so a vendor should not need to be broad to be useful. Each buyer fit is therefore built from the vendor's strongest capabilities plus the gates every lab applies:</p>
+<ul>
+<li><strong>Capability</strong> = 0.7 &times; lead score + 0.3 &times; the best remaining score in that buyer's capability group. Unscored capabilities count as zero. The lead must come from what that buyer cannot do without:
+<ul>
+<li><strong>LLM labs:</strong> lead from expert depth, RL environments or evals; throughput can support but not lead, because the evidence in both briefs is that labs now buy scarce expertise rather than volume.</li>
+<li><strong>World-model labs:</strong> lead from video corpus or simulation, the pretraining inputs for models that predict how scenes evolve; robot data can support.</li>
+<li><strong>Robotics labs:</strong> lead from robot and embodied data or simulation, the inputs for policies that act; video can support but not lead, because footage without actions or forces does not train a policy on its own.</li>
+</ul></li>
+<li><strong>Gates</strong> = mean of the scored buyer-gate dimensions: rights, security, neutrality, traction. These are the four gates the <a href="./canada-buying.html">Canada brief</a> found labs apply to every supplier, in the buyer's own procurement language.</li>
+<li><strong>LLM fit</strong>, <strong>World-model fit</strong> and <strong>Robotics fit</strong> = 0.6 &times; capability + 0.4 &times; gates. A vendor with no capability in a group gets no fit score for that buyer.</li>
+<li><strong>Overall</strong> = plain mean of every scored dimension, as in the benchmark this page is modelled on. It rewards narrow vendors scored on few dimensions, which is why the buyer views sort by fit instead.</li>
+</ul>
+<p><strong>Evidence grade.</strong> <span class="grade grade-A">A</span> core figures come from filings, a company press release confirmed by an independent outlet, or several independent reports that agree. <span class="grade grade-B">B</span> core figures rest on one reputable outlet, an analyst estimate, or company claims. <span class="grade grade-C">C</span> little beyond the vendor's own site or directory listings. The grade measures how much to trust the row, not how good the vendor is.</p>
+</div>
+<div class="method-grid" id="method-grid"></div>
+
+<h2 id="limits">Limits</h2>
+<div class="prose">
+<ul>
+<li><strong>Nothing here was tested hands-on.</strong> Unlike consumer software, a data vendor cannot be trialled without a contract, and quality varies by project and by the team assigned. A low score is a statement about public evidence, not about a vendor's delivered quality on any given engagement.</li>
+<li><strong>Almost every revenue figure is a run-rate, gross of contributor pay, and self-reported or analyst-estimated.</strong> Where sources conflict the conflict is stated in the vendor's evidence, not averaged.</li>
+<li><strong>This market moves weekly.</strong> Rounds reported as &ldquo;in talks&rdquo; are tagged as such and not treated as closed. Several 2026 valuations in circulation (AfterQuery at $3.2B, XDOF at $1.2B, Mercor at $20B) were unconfirmed at the as-of date.</li>
+<li><strong>Customer names are almost never public.</strong> Labs bind vendors to confidentiality, so traction scores lean on revenue scale and credible reporting rather than named logos. Claims such as &ldquo;four of the five top labs&rdquo; are tagged <span class="ref ref-U">[U]</span> unless independently confirmed.</li>
+<li><strong>Conduct scores cover only what is on the public record.</strong> A vendor with no reported incident is not shown to have a clean record; it shows a dash.</li>
+<li><strong>Corrections are welcome.</strong> Open an issue on the repository with a source. Scores will move when the evidence does, and the version number will change with them.</li>
+</ul>
+</div>
+
+<footer class="foot"><p>Vendor benchmark, v0.1, as of 2026-10-20. Analysis of public sources only; no vendor was contacted, and no score is investment or procurement advice. Company names belong to their owners and are used for identification and commentary. Text licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></footer>
+</div>
+
+<script>
+"use strict";
+
+/* ---------------------------------------------------------------------
+   Dimensions. Groups: llm and wm are capability groups; gate feeds both
+   fit composites; conduct counts only toward Overall.
+   --------------------------------------------------------------------- */
+const DIMS = [
+  { k:"expert", n:"Expert depth", h:"Expert\ndepth", g:"llm",
+    d:"Access to vetted domain experts (PhDs, professionals, senior engineers) who can author and judge frontier-difficulty tasks.",
+    a:["Generalist crowd only","Some vetted specialists, narrow domains","Large vetted expert bench across several domains","Deep bench across most frontier domains, with evidence labs rely on it"] },
+  { k:"scale", n:"Throughput", h:"Through-\nput", g:"llm",
+    d:"Contributor pool, language coverage and the ability to deliver large volumes on deadline.",
+    a:["Boutique: hundreds of contributors","Thousands; regional or language-limited","Tens of thousands, multilingual","Hundreds of thousands or more, global, proven at frontier-lab volume"] },
+  { k:"rlenv", n:"RL environments", h:"RL\nenvs", g:"llm",
+    d:"Building interactive environments and verifiers (software replicas, coding sandboxes, tool-use gyms) for reinforcement learning.",
+    a:["None, or ad hoc","Offered as a line of business, little evidence of scale","Established product with reported lab use","Category leader; environments are the core product with strong reported demand"] },
+  { k:"evals", n:"Evals & red-teaming", h:"Evals", g:"llm",
+    d:"Benchmarks, human evaluation panels, red-teaming and rubric design used to measure language and agent models. Robot evaluation is scored under the robot and simulation dimensions.",
+    a:["None","Offered as a service","Published benchmarks or methods, used by labs","Widely cited evaluation work or leaderboards labs and the field use"] },
+  { k:"video", n:"Video & media corpus", h:"Video &\nmedia", g:"wm",
+    d:"Licensed video, audio and image at the scale world-model pretraining needs.",
+    a:["None","Small or narrow catalogue","Large licensed catalogue, hundreds of thousands of hours","Millions of hours, rights-cleared, sold to model developers"] },
+  { k:"robot", n:"Robot & embodied data", h:"Robot &\nembodied", g:"wm",
+    d:"Teleoperation, egocentric capture, motion capture and multi-sensor annotation for embodied models.",
+    a:["None","Annotation of customer-supplied sensor data","Own collection programme with reported robotics customers","Purpose-built collection at scale, with frontier robotics labs as reported customers"] },
+  { k:"sim", n:"Simulation & synthetic", h:"Sim &\nsynthetic", g:"wm",
+    d:"Simulation environments, sim-ready assets, digital twins and synthetic data generation.",
+    a:["None","Some digital-twin or synthetic work","Simulation product with commercial customers","Core product; sim-to-real loop with frontier robotics customers"] },
+  { k:"rights", n:"Rights & provenance", h:"Rights", g:"gate",
+    d:"Chain of title, consent and licence terms a buyer can rely on, including indemnity and provenance records.",
+    a:["Provenance unclear or contested","Commissioned work, standard assignment terms","Documented consent and licensing, clearance as a stated service","Licensing is the business; owned or explicitly licensed catalogue, provenance per asset"] },
+  { k:"security", n:"Security & trust", h:"Security", g:"gate",
+    d:"Certifications, enterprise-grade controls, and the public incident record.",
+    a:["Material public incident affecting customers","Claims standard certifications, no public record either way","Enterprise or regulated-sector security posture, evidenced","Parent or programme held to public-company or government standard, no incidents"] },
+  { k:"neutral", n:"Neutrality", h:"Neutral-\nity", g:"gate",
+    d:"Freedom from ownership or strategic ties that make a lab's rivals reluctant to route data through the vendor.",
+    a:["Owned in large part by a lab or a lab's parent","Strategic investors who are also buyers, or own-model ambitions","Minor strategic ties","Independent; no lab or buyer on the cap table"] },
+  { k:"traction", n:"Lab traction", h:"Traction", g:"gate",
+    d:"Revenue scale and credible reporting of frontier-lab or frontier-robotics customers.",
+    a:["No verified revenue or customers","Early revenue; customer claims unverified","Tens to low hundreds of millions run-rate, credible lab relationships","Billion-dollar scale, confirmed as a primary supplier to several frontier labs"] },
+  { k:"labor", n:"Contributor practice", h:"Contri-\nbutors", g:"conduct",
+    d:"Pay, classification and treatment of the people who make the data, or of licensors for content platforms.",
+    a:["Mass layoffs, abuse findings, or pay far below local norms reported","Active classification or wage litigation","No adverse record; standard terms","Published, enforced pay floors or revenue share"] },
+  { k:"transparency", n:"Disclosure", h:"Disclo-\nsure", g:"conduct",
+    d:"Public pricing, revenue disclosure, open datasets and published research.",
+    a:["Secretive: no pricing, no figures, no research","Occasional figures via press","Regular figures or published research","Public filings, open datasets or open-source tooling"] }
+];
+const DIM_KEYS = DIMS.map(d => d.k);
+const GROUP_LABEL = { llm:"LLM post-training", wm:"World models & robotics", gate:"Buyer gate", conduct:"Conduct" };
+
+const TYPES = {
+  human:"Expert & human data", rl:"RL environments & evals", license:"Licensed content",
+  physical:"Robotics & egocentric", sim:"Simulation & synthetic", managed:"Managed annotation", platform:"Data platforms"
+};
+const REGIONS = ["US","Europe","India","Canada","China","Asia-Pacific","Africa"];
+
+/* Fact shorthand: F(tag, text, sources, qualifier). sources = [[label,url],...] */
+function F(t, x, s, q) { return { t, x, s: s || [], q: q || "" }; }
+
+/* ---------------------------------------------------------------------
+   Vendors. Score order follows DIMS. null = not offered / not scorable.
+   --------------------------------------------------------------------- */
+const S = (expert, scale, rlenv, evals, video, robot, sim, rights, security, neutral, traction, labor, transparency) =>
+  ({ expert, scale, rlenv, evals, video, robot, sim, rights, security, neutral, traction, labor, transparency });
+const _ = null;
+
+const VENDORS = [
+  { name:"Surge AI", hq:"San Francisco", region:["US"], type:"human", grade:"B",
+    desc:"Premium expert RLHF and evaluation data; contributor platform DataAnnotation.tech.",
+    money:"Bootstrapped until 2025 · ~$1.2B revenue (2024 est.) · $25B+ valuation talks (2025)",
+    scores:S(9,8,7,8,_,_,_,6,6,9,10,4,3),
+    why:"Highest traction score in the table: the largest pure-play supplier by revenue, independent, and reported as the main beneficiary of the Scale exodus. Pulled down by near-total opacity and an open misclassification suit.",
+    facts:[
+      F("V","About $1.2B revenue in 2024, larger than Scale AI over the same period.",[["Sacra","https://sacra.com/c/surge-ai"],["Reuters via TradingView","https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L6N3SX0O9%3A0-scale-ai-s-bigger-rival-surge-ai-seeks-up-to-1-billion-capital-raise-sources-say/"]],"Sacra figure is an estimate"),
+      F("V","Growth driven mainly by a group of about a dozen frontier labs.",[["Sacra","https://sacra.com/c/surge-ai"],["Contrary","https://research.contrary.com/company/surge-ai/quick-facts"]],"analyst aggregators"),
+      F("V","In talks in mid-2025 to raise about $1B at a valuation of at least $25B, its first outside capital.",[["Bloomberg Law","https://news.bloomberglaw.com/private-equity/scale-rival-surge-ai-in-talks-for-funding-at-25-billion-value"]],"talks reported; U on whether it closed"),
+      F("U","~$3B annualised revenue by mid-2026, as carried in Brief 1 from Scaling the Enterprise and HeroHunt. Not re-confirmed in this sweep.",[["Brief 1 landscape","./landscape.html"]]),
+      F("V","Proposed class action filed May 2025 in San Francisco Superior Court alleging annotators were misclassified as contractors.",[["CO/AI","https://getcoai.com/news/ai-data-labeling-startup-surge-ai-faces-unpaid-wages-lawsuit"],["AOL / LA Times","https://www.aol.com/news/surge-ai-latest-san-francisco-205539828.html"]],"allegation, unresolved")
+    ]},
+  { name:"Mercor", hq:"San Francisco", region:["US"], type:"human", grade:"A",
+    desc:"Expert marketplace placing professionals (bankers, lawyers, doctors, engineers) on lab training work.",
+    money:"$10B valuation (Oct 2025) · $2B+ gross run-rate (Jul 2026, company) · $20B talks",
+    scores:S(9,9,7,7,_,_,_,5,3,8,9,4,5),
+    why:"Capability and traction are near the top; the March 2026 breach and its fallout give it the lowest security score of any large vendor. Rights is held at 5 because labs reportedly acquire workflow knowledge, and sometimes codebase access, from individuals rather than from the firms that own it.",
+    facts:[
+      F("V","Run-rate passed $2B, roughly doubling in four months, per the CEO.",[["TechCrunch","https://techcrunch.com/?p=3140621"]],"Jul 2026; company claim"),
+      F("V","$614M gross revenue in H1 2026; contractors receive 60–70% of top line, implying ~$180–250M net.",[["Sacra","https://sacra.com/c/mercor/"]],"estimate"),
+      F("V","$350M Series C led by Felicis at $10B, October 2025; later reported in talks at $20B.",[["Briefs","https://www.briefs.co/news/mercor-eyes-20-billion-valuation-in-fresh-funding-talks/"]],"U on the $20B round closing"),
+      F("V","March 2026 breach via a compromised LiteLLM dependency; Meta paused work indefinitely; OpenAI investigated but did not pause.",[["TechCrunch","https://techcrunch.com/2026/04/09/after-data-breach-10b-valued-startup-mercor-is-having-a-month"]],"Apr 2026"),
+      F("V","At least five, later reported as seven, class actions alleging exposure of contractor SSNs, passports and biometrics.",[["SIA","https://www.staffingindustry.com/news/global-daily-news/ai-staffing-firm-mercor-faces-lawsuits-over-data-breach"]],"allegations"),
+      F("I","Labs buy workflow knowledge from former employees of the firms that own it, a chain-of-title exposure inside the fastest-growing segment.",[["Canada brief","./canada-buying.html"]])
+    ]},
+  { name:"Scale AI", hq:"San Francisco", region:["US"], type:"human", grade:"A",
+    desc:"The incumbent labeller turned data-engine, now 49% owned by Meta; Outlier contributor platform; Physical AI Data Engine.",
+    money:"$29B valuation (Meta deal, Jun 2025) · $870M revenue (2024) · >$1B 2026 (CEO projection)",
+    scores:S(7,9,7,8,_,7,_,6,5,2,7,3,5),
+    why:"The broadest capability set here, including a real robotics line. Neutrality is 2 because a lab's parent owns 49% and three labs left on that ground alone. Two wage suits and a dropped DOL probe hold contributor practice down.",
+    facts:[
+      F("V","Meta paid $14.3B for a 49% non-voting stake, valuing Scale at $29B.",[["Sacra","https://sacra.com/c/scale-ai/"],["Forbes","https://www.forbes.com/sites/richardnieva/2026/05/14/scale-meta-deal/"]],"via Canada brief"),
+      F("V","Google, OpenAI and xAI cut or reduced work with Scale within weeks of the Meta deal; the work moved to Mercor and Surge.",[["Canada brief","./canada-buying.html"]],"analyst write-ups; event ~16 months old"),
+      F("V","CEO Jason Droege projected 2026 revenue above $1B, with enterprise apps at $200M annualised.",[["KuCoin news flash","https://www.kucoin.com/news/flash/scale-ai-revenue-expected-to-exceed-1-billion-in-2026-as-enterprise-ai-applications-grow"]],"May 2026; U on the figure, short secondary item"),
+      F("U","Physical AI Data Engine reported past 100,000 production hours; Generalist and Physical Intelligence named as robotics customers.",[["Tesseract","https://tesseract.academy/top-5-physical-ai-training-data-providers-in-2026/"]],"vendor-comparison blog"),
+      F("V","Two wage and misclassification suits from Outlier workers (Dec 2024, Jan 2025); the Department of Labor dropped its FLSA investigation in May 2025.",[["TechCrunch","https://techcrunch.com/2025/01/09/scale-ai-hit-by-its-second-employee-wage-lawsuit-in-less-than-a-month"],["TechCrunch","https://techcrunch.com/2025/05/09/the-department-of-labor-just-dropped-its-investigation-into-scale-ai"]])
+    ]},
+  { name:"Handshake AI", hq:"San Francisco", region:["US"], type:"human", grade:"B",
+    desc:"College-recruiting network turned expert-data supplier; MOVE fellowship for students, graduates and PhDs.",
+    money:"~$1B gross AI-training run-rate (Apr 2026) · ~$300M net",
+    scores:S(8,8,6,7,_,_,_,6,_,9,8,6,5),
+    why:"A distribution advantage nobody else has: millions of students and PhDs already on the platform. Grew fast on competitors' disruptions, which also makes the base less proven.",
+    facts:[
+      F("V","AI-training gross run-rate rose to nearly $1B in April 2026 from $550M in January; ~$300M net after contractor pay.",[["Dealroom","https://dealroom.co/news/127345-handshakes-arr-crosses-1b-as-ai-training-revenue-surges/"]],"Sacra puts net nearer $450M"),
+      F("V","Company job postings: ~$1B run-rate, paying about $60M a month to more than 30,000 people.",[["Sacra","https://sacra.com/research/handshake-indeed-for-data-labelers/"]],"self-reported"),
+      F("V","MOVE fellows write prompts, grade responses and correct content with citations; Handshake contracts and pays them, labs stay unnamed.",[["Handshake help centre","https://support.joinhandshake.com/hc/en-us/articles/31620022060055-Introduction-to-the-MOVE-Program"]]),
+      F("I","Growth was boosted by the Scale–Meta deal and Mercor's breach, so some share may be borrowed rather than won.",[["Sacra","https://sacra.com/research/handshake-vs-mercor/"]])
+    ]},
+  { name:"Turing", hq:"Palo Alto", region:["US","India"], type:"human", grade:"B",
+    desc:"Remote-engineer marketplace whose AGI Advancement unit supplies coding, reasoning and agentic data to labs.",
+    money:"$2.2B valuation (Mar 2025) · ~$300M run-rate (Jan 2025)",
+    scores:S(8,7,7,6,_,_,_,6,_,9,7,_,5),
+    why:"A credible coding specialist with a profitable base. No 2026 figures were found, so traction is scored on 2025 evidence.",
+    facts:[
+      F("V","$111M Series E at $2.2B led by Khazanah, priced at $167M ARR; described as a key coding provider for OpenAI.",[["TechCrunch","https://techcrunch.com/2025/03/06/turing-a-key-coding-provider-for-openai-and-other-llm-producers-raises-111m-at-a-2-2b-valuation"]],"Mar 2025"),
+      F("V","Run-rate reported at about $300M with sustained GAAP profitability.",[["Pulse 2","https://pulse2.com/turing-111-million-series-e-raised-at-2-2-billion-valuation-for-agi-infrastructure"]],"Jan 2025, company announcement"),
+      F("U","No 2026 round, revenue or segment breakdown found.",[])
+    ]},
+  { name:"micro1", hq:"San Francisco", region:["US"], type:"human", grade:"B",
+    desc:"Expert network moving fast into RL environments, agent evals and wearable-captured robotics data.",
+    money:"$4B valuation (Sep 2026) · >$500M run-rate (summer 2026) · >$1B claimed (Oct 2026)",
+    scores:S(7,8,6,6,_,6,_,5,_,7,7,5,6),
+    why:"One of only two LLM-data leaders with a robotics line. Robotics is new and runs on low-paid capture work, so it scores below the specialists.",
+    facts:[
+      F("V","Raised more than $100M at a $4B valuation, with two xAI co-founders investing.",[["Forbes via Digg","https://digg.com/ai/uh2s45dp"],["arr.club","https://www.arr.club/micro1/micro1-raises-100m-at-4b-valuation-with-8x-jump-in-a-year"]],"Sep 2026"),
+      F("U","Surpassed $1B annual run-rate while profitable, per an end-of-Q3 update.",[["arr.club","https://www.arr.club/micro1/micro1-surpassed-1b-annual-run-rate"]],"third-party tracker, company source not found"),
+      F("V","Sought 10,000 robotics trainers in seven days to label robot task video; ships wearable capture kits to contributors.",[["Runtime Wire","https://runtimewire.com/article/micro1-hiring-10000-robotics-video-trainers"],["micro1","https://www.micro1.ai/data-engine/capture-robotics-data"]],"Sep 2026"),
+      F("V","Robotics contributor listings pay $15–45 an hour.",[["micro1 jobs","https://jobs.micro1.ai/post/940eca2e-d540-4fba-a1b5-e3c954db130e"]])
+    ]},
+  { name:"Snorkel AI", hq:"Redwood City", region:["US"], type:"human", grade:"A",
+    desc:"Programmatic-labelling pioneer whose expert data-as-a-service line now builds agentic tasks, rubrics and environments for labs.",
+    money:"$3.5B valuation (Sep 2026) · >$375M ARR (company)",
+    scores:S(8,6,7,8,_,_,_,7,8,9,7,_,7),
+    why:"The fastest pivot in the table: an 18x run-rate jump in a year on the back of expert data. Strong research heritage lifts evals and disclosure.",
+    facts:[
+      F("V","$350M Series E at $3.5B, co-led by Insight Partners and S32.",[["Snorkel press release","https://snorkel.ai/press/snorkel-ai-raises-350m-to-scale-the-data-factory-for-frontier-ai/"],["Evertiq","https://evertiq.com/news/2026-09-23-snorkel-raises-350-million-to-scale-data-factory-for-frontier-ai"]],"22 Sep 2026"),
+      F("V","Run-rate above $375M, up more than 18x in under a year; Reuters-sourced coverage says $350M from ~$20M.",[["Snorkel","https://snorkel.ai/press/snorkel-ai-raises-350m-to-scale-the-data-factory-for-frontier-ai/"]],"company figure"),
+      F("V","Expert data-as-a-service launched September 2025; customers include AI labs, enterprises and the US federal government.",[["BetaNews","https://betanews.com/article/snorkel-ai-350-million-series-e-valuation/"]])
+    ]},
+  { name:"Invisible Technologies", hq:"San Francisco", region:["US"], type:"human", grade:"B",
+    desc:"Managed RLHF and expert-training workforce, early OpenAI supplier, now also selling enterprise AI ops.",
+    money:">$2B valuation (Sep 2025) · ~$134M revenue (2024 est.)",
+    scores:S(7,7,5,6,_,_,_,6,_,9,7,_,4),
+    why:"A long-standing lab supplier with real contracts, but its biggest claim is unverifiable and no 2026 numbers surfaced.",
+    facts:[
+      F("V","$100M round led by Vanara Capital valuing it above $2B.",[["SiliconANGLE","https://siliconangle.com/2025/09/16/ai-data-provider-invisible-raises-100m-2b-valuation/"],["Bloomberg","https://news.bloombergtax.com/daily-tax-report-international/scale-ai-rival-invisible-technologies-valued-at-over-2-billion"]],"Sep 2025"),
+      F("V","~$134M revenue in 2024 on RLHF contracts with Microsoft and Cohere; OpenAI engaged it in 2022.",[["Sacra","https://sacra.com/research/invisible-at-134m-in-revenue/"]],"estimate"),
+      F("U","Claims to have trained more than 80% of the world's top AI models.",[["Bloomberg","https://news.bloombergtax.com/daily-tax-report-international/scale-ai-rival-invisible-technologies-valued-at-over-2-billion"]],"company claim")
+    ]},
+  { name:"Toloka", hq:"Amsterdam", region:["Europe"], type:"human", grade:"B",
+    desc:"Crowd platform turned expert-data and red-teaming supplier; spun toward independence from Nebius.",
+    money:"$72M led by Bezos Expeditions (May 2025)",
+    scores:S(7,7,5,7,_,_,_,6,7,7,6,_,7),
+    why:"The main European option, with a public research record. Nebius keeps majority economic ownership, a mild neutrality question since Nebius sells compute to labs.",
+    facts:[
+      F("V","Bezos Expeditions led a $72M round; Shopify CTO Mikhail Parakhin became executive chairman.",[["ODSC","https://opendatascience.com/jeff-bezos-leads-72m-investment-in-ai-data-company-toloka/"],["Verdict","https://www.verdict.co.uk/toloka-investment-bezos-expeditions/"]],"May 2025"),
+      F("V","Nebius keeps a majority economic stake but gave up majority voting control.",[["CO/AI","https://getcoai.com/news/bezos-backs-toloka-with-72m-to-advance-human-ai-collaboration"]]),
+      F("V","Clients reported to include Amazon, Microsoft, Anthropic and Shopify.",[["CO/AI","https://getcoai.com/news/bezos-backs-toloka-with-72m-to-advance-human-ai-collaboration"]],"reported, not confirmed by the labs"),
+      F("U","No revenue figure found.",[])
+    ]},
+  { name:"Prolific", hq:"London / Oxford", region:["Europe"], type:"human", grade:"B",
+    desc:"Verified-participant panel for human evaluation, preference data and expert review.",
+    money:"£25M Series A (2023) · ~$350M annualised (Apr 2026 est.)",
+    scores:S(6,7,_,8,_,_,_,7,7,9,6,7,8),
+    why:"The strongest evaluation and disclosure profile among the panels, with a published and enforced pay floor. Expert depth trails the foundries.",
+    facts:[
+      F("V","200,000+ verified participants in 45 countries.",[["Prolific","https://www.prolific.com/foundation-models"]],"company figure"),
+      F("V","HUMAINE, a demographically stratified LLM evaluation framework, presented at ICLR 2026.",[["ICLR 2026","https://iclr.cc/virtual/2026/expo-talk-panel/10020582"]]),
+      F("V","Enforced minimum of £6 / $8 an hour, with £9 / $12 recommended; rate computed on actual completion time.",[["Prolific researcher help","https://researcher-help.prolific.com/en/articles/445230-prolific-s-payment-principles"]]),
+      F("U","~$350M annualised revenue in April 2026, including pass-through to participants.",[["Sacra","https://sacra.com/c/prolific/"]],"analyst estimate")
+    ]},
+  { name:"Labelbox · Alignerr", hq:"San Francisco", region:["US"], type:"human", grade:"B",
+    desc:"Labelling platform plus the Alignerr expert network and the Horizon RL environment product.",
+    money:">$100M Series E, equity plus credit (2026) · profitable (company)",
+    scores:S(7,7,6,6,_,_,_,6,7,9,6,_,5),
+    why:"Platform heritage gives it a solid security posture; its lab-coverage claims conflict with each other, so traction is held to the evidence.",
+    facts:[
+      F("V","Closed more than $100M in Series E equity and credit led by Infinitum Partners, to fund Horizon RL.",[["Unite.AI","https://www.unite.ai/?p=486663"]],"split not disclosed"),
+      F("U","Says it became profitable in 2026 and grew revenue more than 5x.",[["Tech Jack Solutions","https://techjacksolutions.com/?p=97745"]],"company claim"),
+      F("U","Claims to serve over 80%, and later over 90%, of leading US AI labs; the two figures conflict.",[["Labelbox blog","https://labelbox.com/blog/welcoming-upcraft-to-the-labelbox-team/"]]),
+      F("V","Acquired Upcraft in February 2026; describes Alignerr as 1M+ domain experts.",[["Labelbox blog","https://labelbox.com/blog/welcoming-upcraft-to-the-labelbox-team/"]],"U on the network size")
+    ]},
+  { name:"AfterQuery", hq:"San Francisco", region:["US"], type:"human", grade:"B",
+    desc:"Expert datasets and RL environments built from about 100,000 verified professionals.",
+    money:"$300M valuation (Apr 2026) · >$100M ARR · $3.2B reported (Sep 2026)",
+    scores:S(8,5,7,6,_,_,_,6,_,9,6,_,4),
+    why:"Reached nine-figure revenue quickly. The reported 10x valuation step in five months is unconfirmed, so it does not move the score.",
+    facts:[
+      F("V","$30M Series A led by Altos Ventures at $300M post-money; ARR topped $100M shortly before.",[["SiliconANGLE","https://siliconangle.com/2026/04/10/ai-training-data-startup-afterquery-nabs-30m-investment/"]],"Apr 2026"),
+      F("U","Reportedly raised at a $3.2B valuation about five months later.",[["TechCrunch","https://techcrunch.com/?p=3159934"]],"reported, not confirmed"),
+      F("V","Named customers include Nvidia, Legora and Korea's Motif Technologies.",[["Pulse 2","https://pulse2.com/afterquery-30-million-at-300-million-valuation-raised-for-ai-data-solutions-platform"]])
+    ]},
+  { name:"Deccan AI", hq:"Hyderabad / SF", region:["India","US"], type:"human", grade:"B",
+    desc:"India-based contributor network for training and evaluation data, shifting toward enterprise deployment tooling.",
+    money:"$25M Series A (Mar 2026)",
+    scores:S(6,7,5,6,_,_,_,6,_,9,5,_,5),
+    why:"Cost-advantaged throughput from India. Its stated pivot toward enterprise tooling makes its lab commitment less certain.",
+    facts:[
+      F("V","$25M Series A led by A91 Partners with Susquehanna and Prosus; ~125 staff and 1M+ contributors.",[["TechCrunch","https://techcrunch.com/2026/03/25/deccan-ai-raises-25m-as-ai-training-push-relies-on-india-based-workforce"]],"Mar 2026"),
+      F("U","Says it grew 10x and works with a majority of the 'Magnificent 7'.",[["Entrepreneur India","https://india.entrepreneur.com/news-and-trends/deccan-ai-bags-usd-25-mn-in-series-a-round-led-by-a91/503689"]],"company claim")
+    ]},
+  { name:"Datacurve", hq:"San Francisco", region:["US"], type:"human", grade:"B",
+    desc:"Coding-data specialist: private benchmarks find model weaknesses, a bounty platform builds data to fix them.",
+    money:"$15M Series A (Oct 2025)",
+    scores:S(8,4,7,7,_,_,_,6,_,9,5,_,6),
+    why:"A tight loop from evaluation to data in one domain. Small and early, so throughput and traction are low.",
+    facts:[
+      F("V","$15M Series A led by Chemistry, with YC and individuals from DeepMind, Anthropic and OpenAI.",[["Maginative","https://www.maginative.com/article/datacurve-raises-15m-series-a-led-by-chemistry/"],["Homebrew","https://www.homebrew.co/blog-posts/datacurve-raises-usd15-million-to-deliver-frontier-coding-data-to-help-ai-model-companies-solve-complex-problems"]],"Oct 2025"),
+      F("V","More than 14,000 vetted engineers compete for bounties on its Shipd platform; publishes the DeepSWE benchmark.",[["RL List","https://www.rl-list.com/vendors/datacurve"]])
+    ]},
+  { name:"Evaratus", hq:"Bengaluru", region:["India"], type:"human", grade:"C",
+    desc:"Formerly Scaler AI Labs. RL gyms, evals and curated enterprise and consumer data for labs.",
+    money:"No external round found · internally funded",
+    scores:S(6,6,6,6,_,3,_,5,6,9,4,_,3),
+    why:"Scored from Brief 1 on this site. Large self-reported numbers with no third-party corroboration keep traction and disclosure low; the evidence grade is C.",
+    facts:[
+      F("V","Claims $30M+ of work delivered monthly and 4 of the top 5 frontier labs as partners.",[["Evaratus brief","./evaratus.html"]],"claimed on-site; U on truth"),
+      F("V","A founding engineer's site says it partners with 3 global AI research labs, undercutting the 4-of-5 claim.",[["Evaratus brief","./evaratus.html"]]),
+      F("V","200-plus person team in Bengaluru; advertises SOC 2, GDPR and PII scrubbing; lists World Models &amp; Physical AI as a research area.",[["Evaratus brief","./evaratus.html"]])
+    ]},
+  { name:"Fleet AI", hq:"San Francisco", region:["US"], type:"rl", grade:"B",
+    desc:"RL environment builder: simulated replicas of business software for training computer-use agents.",
+    money:"~$60M run-rate (Apr 2026) · $725–750M valuation (reported)",
+    scores:S(_,5,9,6,_,_,_,6,_,9,7,_,4),
+    why:"The fastest-growing environment-native vendor found, and the top RL-environment score. Round terms differ across reports and none is on record from the company.",
+    facts:[
+      F("V","Annualised revenue ~$60M in April 2026, up from ~$1M at end-2025; computed as latest quarter times four.",[["Sacra","https://sacra.com/c/fleet"]],"estimate"),
+      F("U","Closed an unannounced $45M Series A at $725M, or in talks for $50M+ at ~$750M, depending on the report.",[["Runtime Wire","https://runtimewire.com/article/fleet-raises-45m-series-a-725m"],["RL List","https://www.rl-list.com/vendors/fleet-ai"]])
+    ]},
+  { name:"Mechanize", hq:"San Francisco", region:["US"], type:"rl", grade:"B",
+    desc:"Ex-Epoch AI researchers building a small number of long-horizon RL environments for frontier coding agents.",
+    money:"$9.1M at ~$500M post (reported)",
+    scores:S(7,3,8,7,_,_,_,7,_,9,5,_,7),
+    why:"High-quality, deliberately low-volume; publishes its thinking openly. Its reported Anthropic tie is anonymously sourced.",
+    facts:[
+      F("V","Raised $9.1M at a reported $500M post-money from Nat Friedman, Daniel Gross and Patrick Collison.",[["HeroHunt","https://www.herohunt.ai/blog/hiring-rl-environment-engineers-2026-labs-guide/"]]),
+      F("U","Reported working with Anthropic on RL environments, per two anonymous sources; both parties declined comment.",[["TechCrunch","https://techcrunch.com/2025/09/21/silicon-valley-bets-big-on-environments-to-train-ai-agents/"],["RL List","https://www.rl-list.com/vendors/mechanize"]])
+    ]},
+  { name:"HUD", hq:"San Francisco", region:["US"], type:"rl", grade:"C",
+    desc:"Platform and SDK for building RL environments and evals for computer-use and browser agents.",
+    money:"$16M Series A (Jun 2026, reported)",
+    scores:S(_,4,7,7,_,_,_,7,_,9,5,_,7),
+    why:"A tooling layer other environment builders sell through. Funding records conflict, so the grade is C.",
+    facts:[
+      F("U","$16M Series A led by Standard Capital in June 2026; another listing shows $500K total raised.",[["RL List","https://www.rl-list.com/"],["VCBacked","https://www.vcbacked.co/company/hud-san-francisco"]],"conflicting"),
+      F("V","Says over 50 businesses use its platform to build environments and sell them to labs.",[["Canada brief","./canada-buying.html"]],"HUD's own claim; U on effect")
+    ]},
+  { name:"Prime Intellect", hq:"San Francisco", region:["US"], type:"rl", grade:"A",
+    desc:"Open RL stack: compute, an open Environments Hub, evals and its own open models.",
+    money:"$130M Series A at ~$1B (Jul 2026) · $100M+ annualised (company)",
+    scores:S(_,5,8,7,_,_,_,7,5,6,6,_,9),
+    why:"The open-source pole of the market and the top disclosure score. Neutrality is 6 because it trains and releases its own models, and much of its revenue is compute, not data.",
+    facts:[
+      F("V","$130M Series A led by Radical Ventures with Intel Capital, Dell, NVIDIA Ventures and Iconiq; about $1B valuation.",[["Cooley","https://www.cooley.com/news/coverage/2026/2026-07-08-prime-intellect-raises-$130-million-series-a"]],"Jul 2026"),
+      F("V","More than 6,000 customers on its stack and over $100M annualised revenue in under a year.",[["Pulse 2","https://pulse2.com/prime-intellect-raises-130-million-series-a-to-build-open-superintelligence-stack/amp/"]],"company figures"),
+      F("V","Runs the open Environments Hub for RL environments.",[["AI Market Watch","https://www.ai-market-watch.com/company/prime-intellect"]])
+    ]},
+  { name:"Halluminate", hq:"San Francisco", region:["US"], type:"rl", grade:"B",
+    desc:"Finance-domain RL environments and training labs for agents.",
+    money:"$30M Series A (2026) · mid-eight-figure run-rate (company)",
+    scores:S(8,4,8,6,_,_,_,6,_,9,6,_,5),
+    why:"A domain specialist that claims profitability; its lab-count claim is unverified.",
+    facts:[
+      F("V","$30M Series A led by Oak HC/FT, total $38.5M; founded 2024.",[["Pulse 2","https://pulse2.com/halluminate-raises-30-million-series-a-bringing-total-funding-to-38-5-million/amp/"]]),
+      F("U","Profitable at a mid-eight-figure run-rate; built environments with four of the five leading US closed-source labs.",[["AI Weekly","https://aiweekly.co/alerts/halluminate-raises-30m-to-build-finance-ai-training-labs"]],"company claims")
+    ]},
+  { name:"Protege", hq:"New York", region:["US"], type:"license", grade:"B",
+    desc:"Governed marketplace licensing health records, imaging, video and audio, with revenue share to data holders.",
+    money:"~$55–65M raised · a16z-led Series A plus $30M extension (Jan 2026)",
+    scores:S(_,_,_,_,7,_,_,9,7,9,5,7,5),
+    why:"The strongest rights model among multi-modal licensors and a regulated-data security posture. Its video catalogue is large but an order of magnitude smaller than Troveo's.",
+    facts:[
+      F("V","Raised $30M extending its a16z-led $25M Series A.",[["SiliconANGLE","https://siliconangle.com/2026/01/08/protege-raises-30m-grow-governed-marketplace-ai-training-data/"]],"Jan 2026"),
+      F("V","Catalogue reported at 300,000+ hours of video, 500,000+ hours of audio, billions of clinical notes and hundreds of millions of medical images.",[["Pulse 2","https://pulse2.com/protege-profile-bobby-samuels-interview/"]],"company figures"),
+      F("V","Acquired Calliope Networks in 2025 to add premium media and video; pays data partners revenue share per use.",[["Pulse 2","https://pulse2.com/protege-profile-bobby-samuels-interview/"]]),
+      F("U","No source ties it to world-model training customers specifically.",[])
+    ]},
+  { name:"Troveo", hq:"San Francisco", region:["US"], type:"license", grade:"B",
+    desc:"Licenses creators' unused footage for AI training; expanding into audio, gaming and robotics data.",
+    money:"$4.5M disclosed funding · $20M+ paid to content owners",
+    scores:S(_,_,_,_,9,3,_,8,_,9,6,7,6),
+    why:"The largest licensed video catalogue found, which is the raw material of world-model pretraining. Payouts are disclosed; its own revenue is not.",
+    facts:[
+      F("V","Says it has paid more than $20M to content owners and holds 8M+ hours of licensed footage.",[["IT Brief","https://itbrief.co.uk/story/troveo-expands-ai-data-platform-into-five-categories"]],"company figures, Apr 2026"),
+      F("V","Expanded into audio, text, enterprise workflow, gaming and robotics data in April 2026.",[["IT Brief","https://itbrief.co.uk/story/troveo-expands-ai-data-platform-into-five-categories"]]),
+      F("V","Creators keep ownership and can license the same content repeatedly.",[["IAMT","https://theiamt.org/news/2026/02/masv-who-is-troveo/"]])
+    ]},
+  { name:"Wirestock", hq:"San Francisco / Yerevan", region:["US","Europe"], type:"license", grade:"B",
+    desc:"Creator network of 700,000+ licensing photo and video for AI, now targeting physical AI and world models.",
+    money:"$23M Series A (May 2026) · $40M run-rate (company)",
+    scores:S(_,_,_,_,7,_,_,8,_,9,5,7,5),
+    why:"A large creator supply side with a stated world-model focus, but a younger catalogue than the stock giants.",
+    facts:[
+      F("V","$23M Series A led by Nava Ventures; 700,000+ creators; run-rate above $40M.",[["SiliconANGLE","https://siliconangle.com/2026/05/14/ai-training-data-provider-wirestock-raises-23m-funding/"]],"May 2026; figures company-reported"),
+      F("V","Names physical AI and world models as focus areas.",[["PR Asia","https://en.prnasia.com/releases/apac/wirestock-raises-23-million-series-a-to-scale-the-world-s-leading-multimodal-data-platform-533242.shtml"]])
+    ]},
+  { name:"Shutterstock (Getty merger pending)", hq:"New York", region:["US"], type:"license", grade:"A",
+    desc:"Stock image, video and music library with a dedicated data-licensing and AI services division.",
+    money:"Public (NYSE) · $3.7B merger with Getty pending",
+    scores:S(_,_,_,_,8,_,_,9,8,9,7,_,8),
+    why:"Owned or contracted catalogue, public-company controls and filings make it the safest rights choice for video. Merger review clouds its near-term structure.",
+    facts:[
+      F("V","Reported $138M from data licensing in a single year.",[["Canada brief","./canada-buying.html"]],"2023–24 deal era; stale"),
+      F("V","CEO says the Data Licensing and AI Services division has a robust pipeline; the UK CMA flagged editorial-content concerns in the Getty merger.",[["Shutterstock Q1 2026","https://investor.shutterstock.com/node/14656"]]),
+      F("V","Getty's June 2026 OpenAI deal is display-only and grants no training rights.",[["Barchart","https://www.barchart.com/story/news/3000014/getty-images-openai-deal-gives-the-stock-a-new-ai-licensing-story"]])
+    ]},
+  { name:"Cloudflare · Human Native", hq:"San Francisco / London", region:["US","Europe"], type:"license", grade:"B",
+    desc:"Licensed-data marketplace for creators and rights holders, now inside Cloudflare alongside Pay Per Crawl.",
+    money:"Acquired by Cloudflare (Jan 2026), terms undisclosed",
+    scores:S(_,_,_,_,4,_,_,9,9,8,4,7,6),
+    why:"Rights-first by design, with a public-company security parent. Too new inside Cloudflare to show lab traction.",
+    facts:[
+      F("V","Cloudflare acquired Human Native, a 2024-founded UK marketplace for licensing text, audio and video for AI training.",[["SiliconANGLE","https://siliconangle.com/2026/01/15/cloudflare-buys-human-native-strengthen-licensed-data-access-ai-developers/"],["TechInformed","https://techinformed.com/cloudflare-buys-human-native-to-build-licensed-ai-data-marketplace/"]],"Jan 2026"),
+      F("V","Extends Cloudflare's Pay Per Crawl (July 2025) and AI Crawl Control products.",[["Techstrong","https://techstrong.ai/articles/cloudflare-acquires-ai-data-marketplace-human-native-to-build-content-creator-payment-system/"]])
+    ]},
+  { name:"Petrarch", hq:"San Francisco", region:["US"], type:"license", grade:"C",
+    desc:"YC S26 broker of industrial operational data, including from bankruptcies and pivots.",
+    money:"YC standard terms · 3 staff",
+    scores:S(_,2,_,_,_,3,_,6,_,9,3,_,3),
+    why:"Scored from Brief 1 on this site. Concrete but small transactions; a possible pivot to PE buyers is unconfirmed.",
+    facts:[
+      F("V","Has transacted construction plans, autonomous-driving recordings and codebases; certifies legal clearance.",[["Petrarch brief","./petrarch.html"]]),
+      F("I","May be pivoting from labs to private-equity buyers, per a single third-party summary.",[["Petrarch brief","./petrarch.html"]])
+    ]},
+  { name:"XDOF", hq:"San Francisco", region:["US"], type:"physical", grade:"B",
+    desc:"Teleoperation hardware, collection and evaluation stack for robot foundation models; founders built GELLO.",
+    money:"$70M launch round (Jun 2026) · $1.2B Series B talks (reported)",
+    scores:S(_,_,_,_,_,9,5,7,_,9,7,_,7),
+    why:"The top robot-data score and the top robotics fit: purpose-built teleop at scale with frontier robotics labs as reported customers, a large open dataset, and its own evaluation sets.",
+    facts:[
+      F("V","Launched with $70M from Thrive, Spark, a16z, Lux and WndrCo; about 20 customers including frontier AI labs; 60+ staff.",[["SiliconANGLE","https://siliconangle.com/2026/06/17/robotic-teleoperation-data-startup-xdof-launches-70m-funding/"]],"Jun 2026"),
+      F("V","Released ABC-130K: 130,000 bimanual manipulation trajectories plus 300 hours of simulation and 100 hours of evaluations, with Berkeley, CMU, MIT and Amazon FAR.",[["SiliconANGLE","https://siliconangle.com/2026/06/17/robotic-teleoperation-data-startup-xdof-launches-70m-funding/"]]),
+      F("U","Annualised revenue near $50M; Series B talks at $1.2B.",[["Runtime Wire","https://runtimewire.com/article/xdof-70m-abc-130k-robot-training-data"]],"secondary, unconfirmed")
+    ]},
+  { name:"Mecka AI", hq:"New York (Toronto per one source)", region:["US","Canada"], type:"physical", grade:"B",
+    desc:"Pays people to record everyday tasks wearing custom body sensors and iPhones, and sells the motion data to humanoid and robotics labs.",
+    money:"$60M Series B led by Sequoia (Oct 2026) · $128M total · ~$100M run-rate on signed contracts (company)",
+    scores:S(_,_,_,_,5,8,_,6,_,7,7,6,6),
+    why:"Probably the fastest revenue ramp in robotics data, now with Sequoia as lead. Human capture rather than teleoperation, so it scales faster than XDOF but is less robot-specific. NVIDIA, Samsung, Qualcomm and Microsoft's M12 are both investors and likely buyers, which costs it on neutrality.",
+    facts:[
+      F("V","$60M Series B led by Sequoia with NVIDIA, M12, Qualcomm Ventures and Samsung; Kindred, Framework and Neo returning.",[["TechCrunch","https://techcrunch.com/2026/10/07/robot-data-startup-mecka-ai-nabs-60m-from-sequoia/"],["Dealroom","https://dealroom.co/news/160699-mecka-raises-60m-series-b-to-turn-human-motion-into-robot-training-data/"]],"7 Oct 2026; valuation not disclosed, earlier reported near $500M"),
+      F("V","Earlier $60M across a $25M Series A (Nov 2025) and a $35M follow-on, both led by Framework Ventures, with Menlo, SV Angel and Kindred; four co-founders led by CEO Josh Gao; 40 staff; New York headquarters.",[["Fortune","https://fortune.com/2026/06/01/mecka-ai-series-a-60-million-robotics-data-training/"]],"1 Jun 2026"),
+      F("V","Collects human data with custom body sensors and iPhones rather than teleoperation; equipment made in Shenzhen; customers not named.",[["Fortune","https://fortune.com/2026/06/01/mecka-ai-series-a-60-million-robotics-data-training/"]]),
+      F("U","Run-rate of about $100M: Fortune reports it as projected from signed contracts, Dealroom as surpassed in June 2026, with ~$300M expected by year end.",[["Fortune","https://fortune.com/2026/06/01/mecka-ai-series-a-60-million-robotics-data-training/"],["Dealroom","https://dealroom.co/news/160699-mecka-raises-60m-series-b-to-turn-human-motion-into-robot-training-data/"]],"company figures, framed differently"),
+      F("V","EgoVerse dataset: 1,362 hours, 80,000 episodes, 2,087 demonstrators.",[["Pulse 2","https://pulse2.com/mecka-raises-60-million-series-b-led-by-sequoia-capital/"]]),
+      F("U","Dealroom describes it as a New York and Toronto startup; Fortune and TechCrunch mention no Toronto presence.",[["Dealroom","https://dealroom.co/news/160699-mecka-raises-60m-series-b-to-turn-human-motion-into-robot-training-data/"]])
+    ]},
+  { name:"Lightwheel", hq:"Shanghai / Santa Clara", region:["China","US"], type:"sim", grade:"B",
+    desc:"Simulation, sim-ready assets, egocentric capture (EgoSuite) and robot evaluation in one Real2Sim2Real loop.",
+    money:"~1B yuan rounds incl. Ant Group-led (2026) · 550M yuan Q1 orders",
+    scores:S(_,_,_,_,6,8,9,6,5,6,8,_,6),
+    why:"The top world-model fit and effectively tied with XDOF for robotics: the only vendor scoring high on simulation, robot data and robot evaluation together, with Google DeepMind and Figure among named customers. China-based ownership and joint ventures will be a gate for some US labs.",
+    facts:[
+      F("V","New orders of 550M yuan (~$100M) in Q1 2026; a further round led by Ant Group in May.",[["Gasgoo","https://autonews.gasgoo.com/articles/news/seeds-lightwheel-completes-new-funding-round-2059652092774633473"]],"orders booked, not recognised revenue"),
+      F("V","Customers on NVIDIA's case study include AgiBot, BYD, ByteDance, Figure, Geely and Google DeepMind.",[["NVIDIA","https://www.nvidia.com/en-eu/customer-stories/lightwheel"]]),
+      F("V","Says it has delivered 1.5M+ hours of human video data across 25,000+ environment nodes.",[["Gasgoo, WAIC 2026","https://autonews.gasgoo.com/articles/news/waic-2026-lightwheel-demonstrates-physical-ai-infrastructure-2078079009186357249"]],"company figure"),
+      F("I","Joint ventures with three listed Chinese companies and Chinese lead investors make export-control and data-residency review likely for US buyers.",[["Gasgoo","https://autonews.gasgoo.com/articles/market-industry/2085668303443091456"]])
+    ]},
+  { name:"Build AI", hq:"San Francisco / Bengaluru", region:["US","India"], type:"physical", grade:"B",
+    desc:"Egocentric factory-work video captured by worn cameras, much of it released openly.",
+    money:"~$15M total (aggregator)",
+    scores:S(_,_,_,_,6,7,_,6,_,9,5,3,8),
+    why:"Set the floor price for raw egocentric video by releasing it free. Reporting on the pay of the factory workers who wear the cameras gives it a low contributor score.",
+    facts:[
+      F("V","Released Egocentric-10K, -100K and roughly 1M hours (April 2026) under permissive commercial licences.",[["Tesseract","https://tesseract.academy/top-5-physical-ai-training-data-providers-in-2026/"]],"U on the hour counts"),
+      F("V","Acquired Indian egocentric aggregator Egolab; garment workers reportedly earn about Rs 400 a day for wearing a camera through a shift.",[["Scroll","https://scroll.in/article/1092960/how-big-tech-is-harnessing-the-data-of-indian-factory-workers-to-train-robots"]]),
+      F("U","$15M total funding from Abstract, Pear VC and HF0.",[["Claru","https://claru.ai/compare/build-ai-alternatives"]],"competitor page")
+    ]},
+  { name:"Microagi", hq:"Munich", region:["Europe","US"], type:"physical", grade:"B",
+    desc:"Records real work in live factories and homes with its own capture hardware, extends it in simulation, and licenses it to labs.",
+    money:"$55M seed led by Hummingbird (Jul 2026), Germany's largest seed",
+    scores:S(_,_,_,_,5,7,5,5,_,6,6,_,4),
+    why:"Real production-line capture with exclusive frontier-lab licences after ten months. Neutrality is 6 because it also deploys and fine-tunes robots for its own customers, which puts it in competition with the labs it sells to. Recording inside homes in exchange for free cleaning holds rights at 5 until its consent terms are public.",
+    facts:[
+      F("V","$55M seed led by Hummingbird with Northzone, LocalGlobe, Village Global and Redalpine; founded about ten months earlier by former Red Bull Racing and Mercedes F1 engineers.",[["Sifted","https://sifted.eu/articles/munich-robotics-startup-microagi-raises-55m-germanys-largest-ever-seed-round"],["SiliconANGLE","https://www.siliconangle.com/2026/07/16/microagi-nabs-55m-teach-factory-robots-work/"]],"16 Jul 2026"),
+      F("V","Offered free apartment cleanings in New York in exchange for recording everything, and has licensed some of that data exclusively to frontier AI labs.",[["Semafor","https://semafor.com/article/07/16/2026/robot-data-startup-microagi-raises-largest-seed-round-ever-in-germany"]],"labs unnamed"),
+      F("V","Its Atlas platform records live production environments and expands the data through simulation; it leases Unitree and UBTech robots to the factories it records in.",[["Pulse 2","https://pulse2.com/microagi-raises-55-million-seed-funding/"]])
+    ]},
+  { name:"Human Archive", hq:"San Francisco / India", region:["US","India"], type:"physical", grade:"B",
+    desc:"YC-backed data lab putting camera headsets, wrist cameras, tactile gloves and mocap suits on service workers in India.",
+    money:"$8.2M seed led by Wing VC (May 2026)",
+    scores:S(_,_,_,_,5,7,_,5,_,9,4,_,5),
+    why:"Multi-sensor capture (video plus touch and full-body motion) is what robotics labs say they lack, and 1,000+ deployed headsets is real scale for a seed company. A reported $1/hour contributor rate is unconfirmed, so contributor practice is not scored yet.",
+    facts:[
+      F("V","$8.2M seed led by Wing VC with nvp capital and Y Combinator; angels from OpenAI, Nvidia, Google and Meta.",[["Pulse 2","https://pulse2.com/human-archive-8-2-million-raised-to-build-training-data-infrastructure-for-physical-ai/"],["Wing VC","https://docs.wing.vc/content/human-archive-the-common-crawl-for-embodied-intelligence"]],"May 2026"),
+      F("V","More than 1,000 active headsets across home-services, hotel and restaurant partners in India, plus tactile gloves, wrist cameras and mocap suits.",[["AI Weekly","https://aiweekly.co/alerts/human-archive-trains-robots-on-indian-gig-worker-data"]],"company figures; U on whether gloves and suits are deployed yet"),
+      F("U","Workers reportedly paid about $1 an hour for data collection.",[["AI Weekly","https://aiweekly.co/alerts/human-archive-trains-robots-on-indian-gig-worker-data"]],"single secondary source")
+    ]},
+  { name:"Luel", hq:"San Francisco", region:["US"], type:"license", grade:"B",
+    desc:"YC W26 marketplace for rights-cleared multimodal data: custom collection to a buyer's spec, including egocentric video, plus off-the-shelf sets.",
+    money:"$31.2M led by Lightspeed (May 2026)",
+    scores:S(_,_,_,_,6,5,_,8,_,9,5,_,5),
+    why:"A rights-first model applied to commissioned physical-world capture, with consent and provenance attached per clip. Delivers raw capture without depth, pose or segmentation, so its robotics score trails the multi-sensor collectors.",
+    facts:[
+      F("V","Lightspeed led a $31.2M financing with General Catalyst and SV Angel.",[["Lightspeed","https://lsvp.com/stories/our-investment-in-luel-the-marketplace-for-multimodal-ai-training-data/"]],"15 May 2026"),
+      F("V","Buyers specify modality, scenario, language, geography and QA rules; Luel recruits contributors, captures and packages the data for frontier AI teams.",[["YC","https://ycombinator.com/companies/luel"]]),
+      F("U","$2M ARR within weeks of demo day; contributor network put at 500,000+ to 600,000+ across 96 countries.",[["StartupHub","https://www.startuphub.ai/ai-news/claudes-corner/2026/claudes-corner-luel-yc-w2026"]],"figures vary by source")
+    ]},
+  { name:"Cortex AI", hq:"San Francisco", region:["US"], type:"physical", grade:"C",
+    desc:"YC F25: egocentric workplace video, robot trajectories from live industrial deployments, and operator-recovered rollouts for evaluation.",
+    money:"Seed, $6–12.5M depending on the source",
+    scores:S(_,_,_,_,4,6,_,6,_,9,3,_,4),
+    why:"One of the few vendors selling real-deployment robot trajectories and failure recoveries rather than demonstrations alone. Very early and thinly evidenced, hence grade C.",
+    facts:[
+      F("V","Sells three products to frontier labs and robotics companies: annotated egocentric workplace video, manipulator and humanoid trajectories from live industrial sites, and human-in-the-loop rollouts.",[["YC","https://ycombinator.com/companies/cortex-ai"]]),
+      F("U","Seed funding reported as $6M (Mar 2026), $6.5M or $12.5M total, with 500 Global, Matrix and YC named.",[["CB Insights","https://www.cbinsights.com/company/cortexai"],["Caplight","https://www.caplight.com/company/cortexrobot"]],"aggregators conflict")
+    ]},
+  { name:"Bones Studio", hq:"Not established", region:[], type:"physical", grade:"B",
+    desc:"Motion-capture studio licensing a large human-motion library for humanoid whole-body control; released a 142,000-motion open subset.",
+    money:"Funding not established",
+    scores:S(_,_,_,_,_,6,_,7,_,8,5,_,8),
+    why:"Studio-captured motion with clean rights, and its open subset has already trained NVIDIA models. Whole-body motion, not hand dexterity or touch, so it is a complement to teleop data rather than a substitute.",
+    facts:[
+      F("V","Released BONES-SEED at GTC 2026: 142,000 motions in SOMA and Unitree G1 formats with language descriptions and temporal segmentation; expanded datasets from the full library are licensed commercially.",[["Robotics Tomorrow","https://www.roboticstomorrow.com/news/2026/03/17/bones-studio-to-release-bones-seed-the-first-multimodal-motion-dataset-purpose-built-for-humanoid-robotics/26276/"]],"Mar 2026"),
+      F("V","NVIDIA's Kimodo-SOMA-SEED model was trained on it; the same data powered the SONIC whole-body control model.",[["Hugging Face","https://huggingface.co/nvidia/Kimodo-SOMA-SEED-v1/blob/main/README.md"]]),
+      F("U","Commercial terms of the open subset were not retrieved; licence text sits behind a gated page.",[])
+    ]},
+  { name:"Noitom", hq:"Beijing", region:["China"], type:"physical", grade:"B",
+    desc:"Motion-capture specialist selling motion data for embodied AI; released the 617-hour HiPHI dataset.",
+    money:"Funding not established",
+    scores:S(_,_,_,_,_,6,_,6,_,8,5,_,7),
+    why:"High-precision whole-body and object-interaction capture with an open research tier. China-based, which some US buyers will treat as a gate, and commercial use goes through a separate enterprise licence.",
+    facts:[
+      F("V","HiPHI: 617.5 hours of 90 Hz motion capture from 132 performers, 245.7 hours of it human-object interaction with 40 objects; free for non-commercial research, enterprise access via ModalityNet.",[["eWeek","https://www.eweek.com/news/noitom-hiphi-motion-dataset-humanoid-ai-china-apac/"]],"20 Aug 2026"),
+      F("I","Whole-body motion without fine finger dexterity or touch, so it complements rather than replaces manipulation data.",[["eWeek","https://www.eweek.com/news/noitom-hiphi-motion-dataset-humanoid-ai-china-apac/"]])
+    ]},
+  { name:"Encord", hq:"London / San Francisco", region:["Europe","US"], type:"platform", grade:"A",
+    desc:"Multimodal data platform for curation, annotation and evaluation, increasingly sold to physical-AI teams.",
+    money:"$60M Series C led by Wellington (Feb 2026) · $110M total",
+    scores:S(_,5,_,6,6,7,_,7,8,9,6,_,7),
+    why:"The tooling layer under many robotics data programmes rather than a data seller itself; scores reflect what it enables plus its managed services.",
+    facts:[
+      F("V","$60M Series C led by Wellington Management.",[["SiliconANGLE","https://siliconangle.com/2026/02/26/physical-ai-data-infrastructure-startup-encord-lands-60m-accelerate-intelligent-robot-drone-development/"]],"26 Feb 2026"),
+      F("V","Hosted data grew from 1PB to 5PB+ in a year; physical-AI revenue up 10x; customers include Woven by Toyota, Zipline and Skydio.",[["Crowdfund Insider","https://www.crowdfundinsider.com/2026/03/264496-encord-raises-60m-to-build-data-infrastructure-for-physical-ai/"]],"company figures")
+    ]},
+  { name:"Uber AI Solutions", hq:"San Francisco", region:["US"], type:"managed", grade:"B",
+    desc:"Uber's data labelling, collection and testing arm, built on its gig workforce; bought Segments.ai for lidar annotation.",
+    money:"Division of Uber (public) · no segment revenue disclosed",
+    scores:S(5,8,_,5,_,6,_,6,8,6,5,_,5),
+    why:"Huge latent workforce and public-company controls. Uber's own autonomous-vehicle partnerships make it a competitor-adjacent supplier to AV and robotics labs.",
+    facts:[
+      F("V","Announced the Segments.ai acquisition and a push into lidar and multi-sensor annotation at CES 2026.",[["Uber","https://www.uber.com/iq/ku-iq/ai-solutions/ces/"]]),
+      F("V","Hiring a frontier-labs programme manager for robotics labelling (grasp detection, action segmentation, trajectories) and LLM evaluation.",[["The Muse","https://www.themuse.com/jobs/uber/manager-ii-pgm-tech-frontier-labs"]],"hiring signal, not a client list")
+    ]},
+  { name:"TELUS Digital", hq:"Vancouver", region:["Canada"], type:"managed", grade:"A",
+    desc:"Former Lionbridge AI: global annotation and collection, now including egocentric and teleoperation capture for physical AI.",
+    money:"Privatised by TELUS (Oct 2025, ~US$539M for minority) · revenue not broken out",
+    scores:S(5,9,_,6,5,6,4,7,8,9,6,_,4),
+    why:"The broadest managed-service footprint here, and one of few with real robotics collection. Privatisation removed its disclosure, which costs it on transparency.",
+    facts:[
+      F("V","Named a Leader in NelsonHall's 2026 AI enablement evaluation; ~77 AI enablement clients including foundation-model builders.",[["Finviz / NelsonHall","https://finviz.com/news/383565/telus-digital-named-a-leader-in-the-2026-nelsonhall-neat-evaluation-for-ai-enablement-services"]]),
+      F("V","Collects egocentric and teleoperation data across single- and dual-arm systems, dexterous hands and humanoids.",[["Finviz / NelsonHall","https://finviz.com/news/383565/telus-digital-named-a-leader-in-the-2026-nelsonhall-neat-evaluation-for-ai-enablement-services"]]),
+      F("V","Claims 1M+ annotators and 500+ languages; TELUS does not break out AI data revenue.",[["Canada brief","./canada-players.html"]],"U on the claims")
+    ]},
+  { name:"Appen", hq:"Sydney", region:["Asia-Pacific","China"], type:"managed", grade:"A",
+    desc:"Listed annotation company whose growth now comes from LLM projects in China.",
+    money:"ASX: APX · A$119.9M H1 FY26 revenue · FY26 guidance A$270–300M",
+    scores:S(5,8,_,6,5,4,_,7,7,8,6,_,9),
+    why:"The most transparent vendor in the table, by virtue of being listed. Growth is concentrated in China while its Western business shrinks.",
+    facts:[
+      F("V","H1 FY26 revenue up 17.5% to A$119.9M; Appen China up 80.4% to A$76.2M on generative-AI projects; Appen Global down 26.9%.",[["ASX announcement","https://announcements.asx.com.au/asxpdf/20260827/pdf/0739d4q7lyh3w2.pdf"]],"27 Aug 2026"),
+      F("V","FY26 revenue guidance reaffirmed at A$270–300M.",[["ASX announcement","https://announcements.asx.com.au/asxpdf/20260827/pdf/0739d4q7lyh3w2.pdf"]])
+    ]},
+  { name:"iMerit (EXL)", hq:"Kolkata / San Jose", region:["India","US"], type:"managed", grade:"A",
+    desc:"Specialist annotation for medical, autonomy and generative AI, now inside EXL.",
+    money:"Acquired by EXL for up to $310M (closed Aug 2026)",
+    scores:S(6,7,_,5,_,6,_,7,8,9,5,_,7),
+    why:"A steady, compliance-heavy supplier, now with a public parent. No evidence of frontier-lab scale in 2026.",
+    facts:[
+      F("V","EXL agreed to buy iMerit for up to $310M ($170M upfront, up to $140M earn-outs) and completed the deal on 3 Aug 2026.",[["EXL","https://www.exlservice.com/about/newsroom/exl-completes-acquisition-of-imerit-accelerating-enterprise-ai-leadership"]]),
+      F("V","EXL cited iMerit's expertise in training and fine-tuning large language and multimodal models.",[["Chartmill / GlobeNewswire","https://www.chartmill.com/news/external/54483/globenews-2026-6-24-exl-to-acquire-imerit-advancing-its-leadership-in-enterprise-ai-by-adding-foundation-model-expertise-and-technology"]])
+    ]},
+  { name:"Sama", hq:"San Francisco / Nairobi", region:["US","Africa"], type:"managed", grade:"B",
+    desc:"Impact-sourcing annotation company with large operations in East Africa.",
+    money:"~$85M total raised (aggregators)",
+    scores:S(_,6,_,_,5,5,_,5,5,9,3,2,5),
+    why:"Lowest contributor score in the table after a mass layoff when Meta ended a contract, and reporting on workers reviewing private smart-glasses video.",
+    facts:[
+      F("V","Laid off more than 1,000 workers in Kenya after Meta ended a contract.",[["HackerNoon news listing","https://hackernoon.com/company/sama/news"]],"Apr 2026"),
+      F("V","Coverage of investigations into Nairobi annotators reviewing private smart-glasses video.",[["SAS media coverage","https://www.sas.com/sv_se/news/media-coverage.html"]],"secondary"),
+      F("U","Total funding $77–85M depending on the aggregator.",[["Owler","https://www.owler.com/company/sama-inc"]])
+    ]},
+  { name:"Parallel Domain", hq:"San Francisco", region:["US"], type:"sim", grade:"C",
+    desc:"Sensor simulation and synthetic data for perception teams in autonomy and robotics.",
+    money:"$30M Series B (date not established)",
+    scores:S(_,_,_,_,_,4,7,9,_,9,4,_,4),
+    why:"Synthetic data carries no third-party rights or personal data, hence the top rights score; no 2026 evidence of world-model customers.",
+    facts:[
+      F("V","$30M Series B led by March Capital; earlier $11M Series A led by Foundry Group.",[["Inside Autonomous Vehicles","https://insideautonomousvehicles.com/?p=31357"]],"undated; likely stale"),
+      F("U","No 2026 funding, revenue or world-model customer found.",[])
+    ]},
+  { name:"Bifrost", hq:"Singapore / San Francisco", region:["Asia-Pacific","US"], type:"sim", grade:"C",
+    desc:"3D simulated scenarios for training and testing autonomy and robotics models.",
+    money:"$8M Series A (date not established)",
+    scores:S(_,_,_,_,_,3,6,9,_,9,3,_,4),
+    why:"Small and thinly evidenced; included because synthetic scene generation is a live substitute for collected data.",
+    facts:[
+      F("V","$8M Series A led by Carbide Ventures with Airbus Ventures and Peak XV's Surge.",[["AJOT","https://www.ajot.com/news/bifrost-raises-8m-to-accelerate-ais-ability-to-solve-problems-in-the-physical-world"]],"undated")
+    ]},
+  { name:"Kognic", hq:"Gothenburg", region:["Europe"], type:"platform", grade:"C",
+    desc:"Sensor-fusion annotation platform for autonomous vehicles and embodied AI.",
+    money:"SEK 100M (~€8.8M), c. 2024",
+    scores:S(_,_,_,_,_,6,_,7,_,9,4,_,5),
+    why:"A credible European sensor-fusion specialist with no recent public evidence of scale.",
+    facts:[
+      F("V","Raised SEK 100M (€8.8M); targets embodied AI for vehicles and robots.",[["Silicon Canals","https://siliconcanals.com/?p=52689"]],"c. 2024; stale")
+    ]}
+];
+
+/* ---------------------------------------------------------------------
+   Composites
+   --------------------------------------------------------------------- */
+/* The lead capability must come from LEAD; the supporting one may come from
+   anywhere in the group. For LLM labs this stops raw throughput from
+   carrying a vendor: labs buy expertise, not volume. */
+const CAP  = { llm:["expert","scale","rlenv","evals"], wm:["video","robot","sim"], rb:["robot","sim","video"] };
+const LEAD = { llm:["expert","rlenv","evals"],         wm:["video","sim"],          rb:["robot","sim"] };
+const GATES = ["rights","security","neutral","traction"];
+const mean = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
+
+function capability(v, grp) {
+  const val = k => v.scores[k] ?? 0;
+  const lead = LEAD[grp].reduce((best,k) => val(k) > val(best) ? k : best, LEAD[grp][0]);
+  if (val(lead) === 0) return null;
+  const rest = CAP[grp].filter(k => k !== lead).map(val);
+  return 0.7*val(lead) + 0.3*Math.max(0, ...rest);
+}
+function gates(v) { return mean(GATES.map(k=>v.scores[k]).filter(x=>x!==null)); }
+function fit(v, grp) {
+  const c = capability(v, grp); if (c === null) return null;
+  const g = gates(v) ?? 0;
+  return 0.6*c + 0.4*g;
+}
+function overall(v) { return mean(DIM_KEYS.map(k=>v.scores[k]).filter(x=>x!==null)); }
+function scored(v)  { return DIM_KEYS.filter(k=>v.scores[k]!==null).length; }
+
+VENDORS.forEach(v => {
+  v.llm = fit(v,"llm"); v.wm = fit(v,"wm"); v.rb = fit(v,"rb"); v.ov = overall(v); v.n = scored(v);
+  v.id = v.name.toLowerCase().replace(/[^a-z0-9]+/g,"-");
+});
+
+/* ---------------------------------------------------------------------
+   Rendering
+   --------------------------------------------------------------------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+const fmt = x => x === null ? "—" : x.toFixed(1);
+
+const state = { view:"all", type:"all", region:"all", q:"", sort:"llm", dir:"desc", open:new Set() };
+
+const COLS = [
+  { k:"llm", h:"LLM\nfit" }, { k:"wm", h:"World-\nmodel fit" }, { k:"rb", h:"Robotics\nfit" }, { k:"ov", h:"Overall" }, { k:"n", h:"Scored" },
+  ...DIMS.map(d => ({ k:d.k, h:d.h, dim:true })),
+  { k:"grade", h:"Evid-\nence" }
+];
+
+function renderHead() {
+  const tr = document.getElementById("thead-row");
+  let html = '<th class="col-vendor" data-col="name" scope="col">Vendor</th>';
+  COLS.forEach(c => {
+    const title = c.dim ? ` title="${esc(DIMS.find(d=>d.k===c.k).n)}"` : "";
+    html += `<th scope="col" data-col="${c.k}"${title}>${esc(c.h).replace("\n","<br>")}</th>`;
+  });
+  tr.innerHTML = html;
+  tr.addEventListener("click", e => {
+    const th = e.target.closest("th[data-col]"); if (!th) return;
+    const col = th.dataset.col;
+    if (state.sort === col) state.dir = state.dir === "desc" ? "asc" : "desc";
+    else { state.sort = col; state.dir = col === "name" ? "asc" : "desc"; }
+    renderBody();
+  });
+}
+
+function visible() {
+  const q = state.q.trim().toLowerCase();
+  return VENDORS.filter(v =>
+    (state.view === "all" || v[state.view] !== null) &&
+    (state.type === "all" || v.type === state.type) &&
+    (state.region === "all" || v.region.includes(state.region)) &&
+    (!q || (v.name+" "+v.desc+" "+v.hq).toLowerCase().includes(q))
+  );
+}
+
+function sortVal(v, col) {
+  if (col === "name") return v.name.toLowerCase();
+  if (col === "grade") return { A:3, B:2, C:1 }[v.grade];
+  if (col in v.scores) return v.scores[col];
+  return v[col];
+}
+
+function sorted(list) {
+  const { sort, dir } = state, m = dir === "asc" ? 1 : -1;
+  return [...list].sort((a,b) => {
+    const x = sortVal(a,sort), y = sortVal(b,sort);
+    if (x === null && y === null) return a.name.localeCompare(b.name);
+    if (x === null) return 1;
+    if (y === null) return -1;
+    if (typeof x === "string") return m * x.localeCompare(y);
+    return m * (x - y) || a.name.localeCompare(b.name);
+  });
+}
+
+function factHtml(f) {
+  const links = f.s.map(([l,u]) => u.startsWith("./")
+    ? `<a href="${esc(u)}">${esc(l)}</a>`
+    : `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(l)}</a>`).join("; ");
+  const inner = [f.t, links, f.q ? esc(f.q) : ""].filter(Boolean).join(", ");
+  return `<li>${f.x} <span class="btag btag-${f.t}">[${inner}]</span></li>`;
+}
+
+function detailHtml(v) {
+  return `<tr class="detail" id="d-${v.id}"><td colspan="${COLS.length+1}"><div class="dwrap">
+    <p class="money">${esc(v.money)}</p>
+    <h4>Why these scores <span class="ref ref-I">[I]</span></h4>
+    <p class="why">${esc(v.why)}</p>
+    <h4>Evidence</h4>
+    <ul>${v.facts.map(factHtml).join("")}</ul>
+  </div></td></tr>`;
+}
+
+function renderBody() {
+  const list = sorted(visible());
+  const tb = document.getElementById("tbody");
+  if (!list.length) {
+    tb.innerHTML = `<tr class="empty"><td colspan="${COLS.length+1}">No vendors match these filters.</td></tr>`;
+  } else {
+    tb.innerHTML = list.map(v => {
+      const open = state.open.has(v.id);
+      let r = `<tr><td class="vendor">
+        <div class="vn"><button type="button" aria-expanded="${open}" aria-controls="d-${v.id}" data-id="${v.id}">${esc(v.name)}</button></div>
+        <div class="vm">${esc(TYPES[v.type])} · ${esc(v.hq)}</div>
+        <div class="vd">${esc(v.desc)}</div></td>
+        <td class="num fit">${fmt(v.llm)}</td>
+        <td class="num fit">${fmt(v.wm)}</td>
+        <td class="num fit">${fmt(v.rb)}</td>
+        <td class="num">${fmt(v.ov)}</td>
+        <td class="num cov">${v.n}/13<div class="bar"><i style="width:${Math.round(v.n/13*100)}%"></i></div></td>`;
+      DIMS.forEach(d => {
+        const s = v.scores[d.k];
+        r += s === null ? `<td class="sc na">—</td>` : `<td class="sc s${s}">${s}</td>`;
+      });
+      r += `<td class="num"><span class="grade grade-${v.grade}" title="Evidence grade ${v.grade}">${v.grade}</span></td></tr>`;
+      return r + (open ? detailHtml(v) : "");
+    }).join("");
+  }
+  document.querySelectorAll("#thead-row th").forEach(th => {
+    const on = th.dataset.col === state.sort;
+    th.classList.toggle("sorted", on);
+    th.classList.toggle("asc", on && state.dir === "asc");
+    th.setAttribute("aria-sort", on ? (state.dir === "asc" ? "ascending" : "descending") : "none");
+  });
+  document.getElementById("stat-n").textContent = VENDORS.length;
+}
+
+document.getElementById("tbody").addEventListener("click", e => {
+  const b = e.target.closest("button[data-id]"); if (!b) return;
+  const id = b.dataset.id;
+  state.open.has(id) ? state.open.delete(id) : state.open.add(id);
+  renderBody();
+});
+
+function chipGroup(el, items, key) {
+  el.innerHTML = items.map(([val,label]) => {
+    const n = val === "all" ? VENDORS.length
+      : VENDORS.filter(v => key === "type" ? v.type === val : v.region.includes(val)).length;
+    return n ? `<button type="button" class="chip" data-v="${esc(val)}" aria-pressed="${state[key]===val}">${esc(label)}<span class="n">${n}</span></button>` : "";
+  }).join("");
+  el.addEventListener("click", e => {
+    const c = e.target.closest(".chip"); if (!c) return;
+    state[key] = c.dataset.v;
+    el.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === c));
+    renderBody();
+  });
+}
+
+chipGroup(document.getElementById("type-chips"), [["all","All types"], ...Object.entries(TYPES)], "type");
+chipGroup(document.getElementById("region-chips"), [["all","All regions"], ...REGIONS.map(r=>[r,r])], "region");
+
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+  state.view = b.dataset.view;
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  state.sort = state.view === "all" ? "llm" : state.view;
+  state.dir = "desc";
+  renderBody();
+}));
+
+document.getElementById("bm-search").addEventListener("input", e => { state.q = e.target.value; renderBody(); });
+
+/* ---- methodology cards ---- */
+document.getElementById("method-grid").innerHTML = DIMS.map(d => `
+  <div class="mcard"><h4>${esc(d.n)}</h4><p class="grp">${esc(GROUP_LABEL[d.g])}</p><p>${esc(d.d)}</p>
+  <dl>${["1–3","4–6","7–8","9–10"].map((b,i)=>`<dt>${b}</dt><dd>${esc(d.a[i])}</dd>`).join("")}</dl></div>`).join("");
+
+/* ---- the split chart: one row per vendor, one bar track per buyer ---- */
+(function splitChart() {
+  const BUYERS = [["llm","LLM LABS"],["wm","WORLD-MODEL LABS"],["rb","ROBOTICS LABS"]];
+  const primary = v => BUYERS.map(([k]) => k).reduce((best,k) => (v[k] ?? 0) > (v[best] ?? 0) ? k : best, "llm");
+  const order = { llm:0, wm:1, rb:2 };
+  const rows = [...VENDORS].sort((p,q) => order[primary(p)] - order[primary(q)] || (q[primary(q)] ?? 0) - (p[primary(p)] ?? 0));
+  const W = 720, nameW = 168, gap = 18, rowH = 15, T = 42;
+  const trackW = (W - nameW - gap*3) / 3;
+  const H = T + rows.length*rowH + 30;
+  const tx = i => nameW + gap + i*(trackW + gap);
+  const len = v => (v ?? 0) / 10 * trackW;
+  const short = n => n.replace(/ \(.*\)/,"").replace(" · Alignerr","").replace("Cloudflare · ","");
+  let s = `<svg class="dgm" viewBox="0 0 ${W} ${H}" role="img" aria-label="Fit of ${VENDORS.length} vendors for three buyers: LLM labs, world-model labs and robotics labs. LLM vendors have no bar for the other two; the physical-AI vendors split between world-model and robotics leaders; two vendors clear 6 for all three." style="min-width:560px" xmlns="http://www.w3.org/2000/svg">`;
+  BUYERS.forEach(([k,label],i) => {
+    s += `<text class="lbl-cap" x="${tx(i) + trackW/2}" y="18" text-anchor="middle">${label}</text>`;
+    [0,5,10].forEach(t => {
+      const x = tx(i) + len(t), y2 = T + rows.length*rowH;
+      s += `<line class="grid" x1="${x}" y1="${T-8}" x2="${x}" y2="${y2}"/><text class="lbl-s" x="${x}" y="${y2+16}" text-anchor="middle">${t}</text>`;
+    });
+  });
+  let prev = null;
+  rows.forEach((v,i) => {
+    const y = T + i*rowH, p = primary(v);
+    if (prev && p !== prev) s += `<line class="divider" x1="0" y1="${y}" x2="${W}" y2="${y}"/>`;
+    prev = p;
+    const all3 = BUYERS.every(([k]) => (v[k] ?? 0) >= 6);
+    s += `<text class="${all3 ? "lbl-m" : "lbl-s"}" x="${nameW - 6}" y="${y+rowH-4}" text-anchor="end">${esc(short(v.name))}</text>`;
+    BUYERS.forEach(([k],j) => {
+      if (v[k] === null) return;
+      s += `<rect class="bf bf-${k}${k === p ? " bf-lead" : ""}" x="${tx(j)}" y="${y+2}" width="${len(v[k]).toFixed(1)}" height="${rowH-5}" rx="2"><title>${esc(v.name)}: LLM ${fmt(v.llm)}, world-model ${fmt(v.wm)}, robotics ${fmt(v.rb)}</title></rect>`;
+    });
+  });
+  s += `</svg>`;
+  document.getElementById("split-chart").innerHTML = s;
+})();
+
+renderHead();
+renderBody();
+</script>
+</body>
+</html>
