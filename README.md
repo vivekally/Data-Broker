@@ -9,8 +9,9 @@ frontier labs with the data, environments and evaluations they train on.
 |---|---|---|
 | [Evaratus & Petrarch](https://vivekally.github.io/Data-Broker/) | How do two specific training-data suppliers make money, and who buys from them? | 2026-09-08 |
 | [Canadian AI data broker landscape](https://vivekally.github.io/Data-Broker/canada.html) | Is there a Canadian market in this category at all, who is in it, and how do labs buy? | 2026-09-30 |
+| [Vendor benchmark](https://vivekally.github.io/Data-Broker/benchmark.html) | Which data vendors are best placed to supply LLM labs, world-model labs and robotics labs, on the public evidence? | 2026-10-20 |
 
-Both carry the same evidence-tag discipline described below.
+All three carry the same evidence-tag discipline described below.
 
 ---
 
@@ -129,6 +130,7 @@ docs/                        the published site
   canada-buying.html         Brief 2, how labs buy
   canada-regulation.html     Brief 2, the regulatory layer
   canada-market.html         Brief 2, market and implications
+  benchmark.html             vendor benchmark: scorecard, data and methodology in one file
   assets/style.css           the site's only stylesheet, including the diagrams
   .nojekyll                  serve files as-is, no Jekyll processing
 LICENSE                      CC BY 4.0
@@ -136,7 +138,8 @@ LICENSE                      CC BY 4.0
 ```
 
 The site is hand-written static HTML with a single stylesheet. No framework, no
-build step, no CDN, no webfonts, no analytics, no trackers. It renders offline
+build step, no CDN, no webfonts, no analytics, no trackers. The benchmark page
+is the only one with JavaScript, a single inline vanilla script. It renders offline
 from a local clone by opening `docs/index.html`.
 
 `research/research-brief.md` is a byte-for-byte copy of the source document
@@ -218,6 +221,55 @@ report:
   provinces and territories signed on. Licensing terms are not published.
 - **VITAL**'s industry-access terms. $210M+ in funding, 160+ hospitals, 20M+
   Canadians. Access model for industry was not established.
+
+---
+
+# Vendor benchmark (v0.1)
+
+**As of:** 2026-10-20
+
+A sortable, filterable scorecard of 45 companies that supply training data,
+RL environments and evaluations to frontier labs, scored 1–10 on 13
+dimensions and modelled on the
+[AI CFO Benchmark](https://vivekally.github.io/AI-Personal-Finance-Advisor/benchmark.html).
+It has three buyer views: **LLM labs** (expert human data, RL environments,
+evals), **world-model labs** (licensed video and simulation) and **robotics
+labs** (teleoperation, egocentric and motion-capture data, simulation).
+World models and robotics are scored separately because they buy different
+things: footage without actions does not train a robot policy.
+
+| Group | Dimensions |
+|---|---|
+| LLM post-training | Expert depth, throughput, RL environments, evals and red-teaming |
+| World models and robotics | Video and media corpus, robot and embodied data, simulation and synthetic |
+| Buyer gates | Rights and provenance, security, neutrality, lab traction |
+| Conduct | Contributor practice, disclosure |
+
+Each buyer fit is 0.6 × capability + 0.4 × the mean of the four buyer gates,
+where capability is 0.7 × the lead score plus 0.3 × the next best in that
+buyer's group. The lead must be something that buyer cannot do without:
+expertise, environments or evals for LLM labs (not raw throughput); video or
+simulation for world-model labs; robot data or simulation for robotics labs.
+The page explains why.
+
+Unlike the two briefs, this page is **original analysis**, not a verbatim
+source split into pages. Every score is an analyst judgment (`[I]`), and every
+fact behind a score carries its own `[V]`/`[I]`/`[U]` tag with named sources
+linked inline. No vendor was tested, contacted or paid.
+
+The vendor data, rubric anchors and composite formulas are a plain array in
+the page's single inline script, so the scores can be audited or forked
+without running anything.
+
+Benchmark evidence tags use `class="btag"` rather than `class="tag"`, so the
+brief pages' tag audit described above still returns exactly the source
+documents' counts.
+
+**One cross-brief flag.** Mecka AI, which raised a $60M Series B in October
+2026, is described by Dealroom as a New York and Toronto company, though
+Fortune places it in New York only. If the Toronto operation is real, it may
+qualify Brief 2's finding that no Canadian pure-play data-supply company had
+raised a venture round. Brief 2 is reproduced verbatim and has not been edited.
 
 ---
 
